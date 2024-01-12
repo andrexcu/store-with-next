@@ -9,14 +9,19 @@ interface Query {
   isFeatured?: boolean;
 }
 
-const getProducts = async (query: Query): Promise<Product[]> => {
+export const getProducts = async ({
+  categoryId,
+  colorId,
+  sizeId,
+  isFeatured,
+}: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: {
-      colorId: query.colorId,
-      sizeId: query.sizeId,
-      categoryId: query.categoryId,
-      isFeatured: query.isFeatured,
+      colorId: colorId,
+      sizeId: sizeId,
+      categoryId: categoryId,
+      isFeatured: isFeatured,
     },
   });
 
@@ -25,4 +30,17 @@ const getProducts = async (query: Query): Promise<Product[]> => {
   return res.json();
 };
 
-export default getProducts;
+export const getProductsForCategory = async (
+  categoryId: string
+): Promise<Product[]> => {
+  const url = qs.stringifyUrl({
+    url: URL,
+    query: {
+      categoryId: categoryId,
+    },
+  });
+
+  const res = await fetch(url);
+
+  return res.json();
+};

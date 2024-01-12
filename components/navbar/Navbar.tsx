@@ -40,16 +40,19 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
+      {/* <nav
         className={` fixed w-full z-50  ${dmsans.className} 
         ${showBackground ? "bg-[#111014] transition-colors duration-400" : ""}
+      `}> */}
+      <nav
+        className={` fixed bg-[#111014] w-full z-50  ${dmsans.className} 
+        ${showBackground ? " transition-colors duration-400" : ""}
       `}
-        // style={{ backgroundColor: "#111014" }}
       >
         <Container>
           <header
             className={`transition-all duration-300 ease-in flex justify-between items-center cursor-pointer select-none
-            ${showBackground ? "h-16" : "h-32"}`}
+            ${showBackground ? "h-20" : "h-[120px]"}`}
           >
             <Link href="/">
               <div
@@ -57,9 +60,11 @@ const Navbar = () => {
                 className="relative ml-4 items-center flex lg:ml-0 gap-x-2"
               >
                 <p
-                  className={`flex flex-row items-center font-bold text-4xl z-10 p-1 tracking-wide 
-                ${showBackground ? "text-white" : "text-zinc-950"}`}
+                  className={`flex flex-row items-center font-bold text-4xl z-10 p-1 tracking-wide text-white
+            
+                `}
                 >
+                  {/* ${showBackground ? "text-white" : "text-zinc-950 */}
                   {/* <ShoppingCart
                     size={28}
                     className="transform rotate-45 mr-2"
@@ -79,9 +84,11 @@ const Navbar = () => {
                 <div className="bg-red-500 border absolute left-28 rounded-full p-4" />
 
                 <div
-                  className={` absolute left-32 rounded-full p-4
-                ${showBackground ? "bg-[#111014]" : "bg-white"}`}
+                  className={` absolute bg-[#111014] left-32 rounded-full p-4
+                
+                `}
                 />
+                {/* ${showBackground ? "bg-[#111014]" : "bg-white"} */}
               </div>
             </Link>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Urbanist, Stick } from "next/font/google";
+import { Urbanist, Stick, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${urbanist.className}  
+        className={`relative ${urbanist.className}  
         bg-gradient-to-r from-[#EDF1FE]
         
         `}
