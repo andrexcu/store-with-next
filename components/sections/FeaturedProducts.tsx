@@ -17,40 +17,47 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
       <div className="w-full flex flex-col gap-4 ">
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-3 grid grid-cols-2 gap-4">
-            {products?.splice(0, 2).map((product) => (
+            {products?.splice(0, 2).map((product, index) => (
               <div
-                className="relative overflow-hidden h-[300px]"
+                className={`relative overflow-hidden h-[300px] 
+                ${index === 0 ? "" : ""}`}
                 key={product.id}
               >
                 <Image
                   src={product.images[0].url}
                   alt="product image"
-                  width={500}
-                  height={500}
-                  priority
-                  className="
+                  fill
+                  sizes="100vh"
+                  className={`
           transform hover:scale-110
-          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80"
+          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80 
+          ${index === 0 ? "" : ""}`}
+                  placeholder="blur"
+                  blurDataURL={product.images[0].url}
                 />
               </div>
             ))}
           </div>
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {products?.splice(0, 3).map((product) => (
+          {products?.splice(0, 3).map((product, index) => (
             <div
-              className="relative overflow-hidden h-[450px]"
+              className={`relative overflow-hidden h-[450px] ${
+                index === 2 ? "" : ""
+              }`}
               key={product.id}
             >
               <Image
                 src={product.images[0].url}
                 alt="product image"
-                width={500}
-                height={500}
-                priority
-                className="
+                fill
+                sizes="100vh"
+                className={`
           transform hover:scale-110
-          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80"
+          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80
+          ${index === 2 ? "" : ""}`}
+                placeholder="blur"
+                blurDataURL={product.images[0].url}
               />
             </div>
           ))}

@@ -2,7 +2,7 @@
 
 import Cart from "@/components/navbar/Cart";
 import Container from "@/components/ui/Container";
-import { ShoppingCart } from "lucide-react";
+import { Diamond } from "lucide-react";
 import { DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -65,10 +65,6 @@ const Navbar = () => {
                 `}
                 >
                   {/* ${showBackground ? "text-white" : "text-zinc-950 */}
-                  {/* <ShoppingCart
-                    size={28}
-                    className="transform rotate-45 mr-2"
-                  /> */}
 
                   <span>A</span>
                   <span className="opacity-90">I</span>

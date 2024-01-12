@@ -77,7 +77,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               className={`flex flex-row justify-end gap-2 w-full h-full  
             "}`}
             >
-              {categories?.map((category) => (
+              {categories?.slice(0, 3).map((category) => (
                 <div
                   key={category.id}
                   className={`relative  bg-black/30 h-full rounded-xl overflow-hidden transition-all duration-300 ease-in-out 
@@ -163,30 +163,29 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               lovers
             </p>
           </div>
-          <Carousel className=" col-span-3 h-[400px]">
+          <Carousel className="col-span-3 h-[400px]">
             <CarouselContent>
               {selectedCategory?.map((product) => (
                 <CarouselItem
                   key={product.id}
                   className="md:basis-1/2 lg:basis-1/3"
                 >
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="relative flex h-[350px] items-center justify-center p-6 overflow-hidden">
-                        <Image
-                          src={product.images[0].url}
-                          alt="billboard image"
-                          fill
-                          sizes="100vh"
-                          className="
+                  <Card>
+                    <CardContent className="relative flex h-[350px] items-center justify-center overflow-hidden border-2 border-gray-400 hover:border-slate-950">
+                      <Image
+                        src={product.images[0].url}
+                        alt="billboard image"
+                        fill
+                        sizes="100vh"
+                        className="
                           transform hover:scale-110
-                          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80"
-                          // blurDataURL={product.images[0].url}
-                          // priority
-                        />
-                      </CardContent>
-                    </Card>
-                  </div>
+                          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black"
+                        placeholder="blur"
+                        blurDataURL={product.images[0].url}
+                        // priority
+                      />
+                    </CardContent>
+                  </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
