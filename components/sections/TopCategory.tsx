@@ -1,12 +1,11 @@
 "use client";
 import { Category, Product } from "@/lib/types";
 import Image from "next/image";
-import { Image as NextImage } from "@nextui-org/react";
 import { useState } from "react";
 // import { Input } from "@/components/ui/input";
-import { Input } from "@nextui-org/react";
 import { NextProvider } from "@/Providers/NextProvider";
 import { SearchIcon } from "@/components/ui/SearchIcon";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -14,9 +13,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { Gem } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Input } from "@nextui-org/react";
+import { Gem } from "lucide-react";
 // import { getProductsForCategory } from "@/actions/get-products";
 
 interface TopCategoryProps {
@@ -159,8 +158,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           <div className="col-span-3 relative flex h-12 justify-center items-center w-full">
             <Separator className="bg-zinc-200 absolute" />
             <p className="font-thin bg-[#EDF1FE]/70 z-30 p-1">
-              Products for {currentCategory?.map((category) => category.name)}{" "}
-              lovers
+              Special Products for{" "}
+              {currentCategory?.map((category) => category.name)}
             </p>
           </div>
           <Carousel className="col-span-3 h-[400px]">

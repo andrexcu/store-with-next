@@ -1,14 +1,13 @@
+import getBillboard from "@/actions/get-billboard";
 import getCategories from "@/actions/get-categories";
 import getCategory from "@/actions/get-category";
-import { getProducts, getProductsForCategory } from "@/actions/get-products";
-import TopCategory from "@/components/sections/TopCategory";
-import Navbar from "@/components/navbar/Navbar";
-import Container from "@/components/ui/Container";
-import { Category } from "@/lib/types";
+import { getProducts } from "@/actions/get-products";
+import EyeCatch from "@/components/sections/EyeCatch";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Info from "@/components/sections/Info";
-import getBillboard from "@/actions/get-billboard";
-import EyeCatch from "@/components/sections/EyeCatch";
+import InstagramPhotos from "@/components/sections/InstagramPhotos";
+import TopCategory from "@/components/sections/TopCategory";
+import Container from "@/components/ui/Container";
 
 export const revalidate = 0;
 
@@ -35,17 +34,21 @@ const HomePage = async () => {
   // console.log(category);
 
   return (
-    <Container>
-      <div className="py-8 text-center h-full text-3xl font-bold">
-        {/* {categories.map((category) => (
+    <>
+      <Container>
+        <div className="py-8 text-center h-full text-3xl font-bold">
+          {/* {categories.map((category) => (
           <div key={category.id}>{category.id}</div>
         ))} */}
-        <TopCategory categories={categories} products={products} />
-        <FeaturedProducts products={featuredProducts} />
-        <Info billboard={billboard} />
-        <EyeCatch category={category} products={photographyProducts} />
-      </div>
-    </Container>
+          <TopCategory categories={categories} products={products} />
+          <FeaturedProducts products={featuredProducts} />
+          <Info billboard={billboard} />
+          <EyeCatch category={category} products={photographyProducts} />
+          {/* <ShadowScroll products={photographyProducts} /> */}
+        </div>
+      </Container>
+      <InstagramPhotos />
+    </>
   );
 };
 

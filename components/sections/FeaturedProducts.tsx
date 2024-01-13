@@ -8,10 +8,10 @@ interface FeaturedProductsProps {
 
 const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
   return (
-    <section className="relative justify-center flex flex-col gap-4 items-center">
+    <section className="bg-zinc-900 relative justify-center flex flex-col gap-4 items-center framed">
       <div className="absolute mb-40 p-1 z-30 border-4 border-slate-200 ">
         <div className="border-2 border-slate-200 p-2">
-          <p className="text-3xl text-slate-700">Featured Products</p>
+          <p className="text-3xl text-gray-400">Featured Products</p>
         </div>
       </div>
       <div className="w-full flex flex-col gap-4 ">
@@ -31,7 +31,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                   className={`
           transform hover:scale-110
           object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80 
-          ${index === 0 ? "" : ""}`}
+          ${index === 0 ? "rounded-tl-full" : ""}`}
                   placeholder="blur"
                   blurDataURL={product.images[0].url}
                 />
@@ -55,7 +55,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                 className={`
           transform hover:scale-110
           object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black hover:opacity-80
-          ${index === 2 ? "" : ""}`}
+          ${index === 2 ? "rounded-br-full" : ""}`}
                 placeholder="blur"
                 blurDataURL={product.images[0].url}
               />
