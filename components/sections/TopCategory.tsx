@@ -171,7 +171,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                   className="md:basis-1/2 lg:basis-1/3"
                 >
                   <Card>
-                    <CardContent className="relative flex h-[350px] items-center justify-center overflow-hidden border-2 border-gray-400 hover:border-slate-950">
+                    <CardContent className="relative flex h-[350px] items-center justify-center overflow-hidden border-2 border-slate-950">
                       <Image
                         src={product.images[0].url}
                         alt="billboard image"

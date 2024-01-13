@@ -30,10 +30,11 @@ const Info = ({ billboard }: InfoProps) => {
         <Image
           src={billboard?.imageUrl as string}
           alt="product image"
-          width={500}
-          height={500}
-          priority
+          fill
+          sizes="100vh"
           className="w-full h-full "
+          placeholder="blur"
+          blurDataURL={billboard?.imageUrl as string}
         />
       </div>
     </section>
