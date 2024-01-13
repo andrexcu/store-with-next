@@ -12,21 +12,26 @@ const Info = ({ billboard }: InfoProps) => {
   //   console.log(billboard);
   return (
     <section className="relative grid grid-cols-2 h-[400px] mt-24">
-      <div className="bg-zinc-200 flex flex-col justify-center items-center col-span-2 sm:col-span-1">
-        <div className="w-[400px] h-[200px] flex flex-col gap-2 text-start">
-          <p className="text-2xl text-slate-950 flex items-center gap-2">
-            Timeless <LucideInfinity /> Elegance for Your Space
+      <div className="bg-zinc-200 flex flex-col justify-center items-center col-span-2 lg:col-span-1">
+        <div className="w-[420px] h-full flex flex-col justify-center gap-2 text-start  min-w-0">
+          <p className="text-2xl text-slate-950 flex flex-col lg:flex-row justify-start items-center gap-2">
+            <span className="flex justify-start items-center gap-2">
+              Timeless <LucideInfinity />
+            </span>
+            <span>Elegance for Your Space</span>
           </p>
-          <p className="text-lg font-light">
+          <div className="text-center lg:text-start text-lg font-light break-words ">
             Discover your style as AITOUKART Products lets you freely choose
             your preferred colors and sizes.
-          </p>
-          <Button variant="default" className="w-1/3 rounded-none">
-            SHOP NOW
-          </Button>
+          </div>
+          <div className="flex items-center justify-center lg:justify-start w-full ">
+            <Button variant="default" className="w-1/3 rounded-none">
+              SHOP NOW
+            </Button>
+          </div>
         </div>
       </div>
-      <div className="hidden sm:flex relative">
+      <div className="hidden lg:flex relative">
         <Image
           src={billboard?.imageUrl as string}
           alt="product image"

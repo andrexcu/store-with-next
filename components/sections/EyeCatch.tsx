@@ -94,9 +94,9 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
         <ScrollShadow
           hideScrollBar
           size={100}
-          className="col-span-2 sm:col-span-1 h-full select-none"
+          className="col-span-2 lg:col-span-1 h-full select-none"
         >
-          <div className="embla w-[300px] min-w-[300px]">
+          <div className="embla w-[300px] min-w-[300px] ">
             <div className="embla__viewport" ref={emblaRef_left}>
               <div className="embla__container h-[600px]">
                 {products.map((product) => (
@@ -121,7 +121,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
         <ScrollShadow
           hideScrollBar
           size={100}
-          className="hidden sm:flex overflow-y-auto h-full"
+          className="hidden lg:flex overflow-y-auto h-full"
         >
           <div className="embla w-[300px]">
             <div className="embla__viewport" ref={emblaRef_right}>

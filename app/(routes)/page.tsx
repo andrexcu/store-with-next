@@ -6,6 +6,8 @@ import EyeCatch from "@/components/sections/EyeCatch";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Info from "@/components/sections/Info";
 import InstagramPhotos from "@/components/sections/InstagramPhotos";
+import Newsletter from "@/components/sections/Newsletter";
+import OrderInfo from "@/components/sections/OrderInfo";
 import TopCategory from "@/components/sections/TopCategory";
 import Container from "@/components/ui/Container";
 
@@ -44,7 +46,8 @@ const HomePage = async () => {
           <FeaturedProducts products={featuredProducts} />
           <Info billboard={billboard} />
           <EyeCatch category={category} products={photographyProducts} />
-          {/* <ShadowScroll products={photographyProducts} /> */}
+          <Newsletter />
+          <OrderInfo />
         </div>
       </Container>
       <InstagramPhotos />
