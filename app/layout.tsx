@@ -1,9 +1,10 @@
 import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/ui/Footer";
+
 import type { Metadata } from "next";
 
 import "./globals.css";
 import { urbanist } from "@/app/fonts";
+import Footer from "@/components/footer/Footer";
 // urbanist
 // const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -18,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`relative ${urbanist.className}  
-        bg-gradient-to-r from-[#EDF1FE] overflow-x-hidden
+        className={`overflow-x-hidden relative ${urbanist.className}  
+        bg-gradient-to-r from-[#EDF1FE]
         `}
       >
         <Navbar />

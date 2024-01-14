@@ -76,10 +76,10 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               className={`flex flex-row justify-end gap-2 w-full h-full  
             "}`}
             >
-              {categories?.slice(0, 3).map((category) => (
+              {categories?.slice(0, 3).map((category, index) => (
                 <div
                   key={category.id}
-                  className={`relative  bg-black/30 h-full rounded-xl overflow-hidden transition-all duration-300 ease-in-out 
+                  className={`border border-black-500/0 relative  bg-black/30 w-[150px] h-full rounded-xl overflow-hidden transition-all duration-300 ease-in-out 
                 
               ${selected === category.id ? "w-full" : "w-[150px]"}`}
                   onClick={() => {
@@ -118,7 +118,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-20 left-60">
+          <div className="absolute bottom-20 left-56">
             <Input
               label="Discover"
               radius="lg"
@@ -170,19 +170,20 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                   className="md:basis-1/2 lg:basis-1/3"
                 >
                   <Card>
-                    <CardContent className="relative flex h-[350px] items-center justify-center overflow-hidden border-2 border-slate-950">
-                      <Image
-                        src={product.images[0].url}
-                        alt="billboard image"
-                        fill
-                        sizes="100vh"
-                        className="
+                    <CardContent className="relative flex h-[350px] items-center justify-center overflow-hidden border-4 border-slate-950 p-12">
+                      <div className="absolute top-0 w-full h-full border-2 border-slate-200 overflow-hidden p-2">
+                        <Image
+                          src={product.images[0].url}
+                          alt="billboard image"
+                          fill
+                          sizes="100vh"
+                          className="
                           transform hover:scale-110
-                          object-cover absolute w-full h-full transition-all duration-300 ease-in-out bg-black"
-                        placeholder="blur"
-                        blurDataURL={product.images[0].url}
-                        // priority
-                      />
+                          object-cover absolute w- h-full transition-all duration-300 ease-in-out bg-black"
+                          placeholder="blur"
+                          blurDataURL={product.images[0].url}
+                        />
+                      </div>
                     </CardContent>
                   </Card>
                 </CarouselItem>

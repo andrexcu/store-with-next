@@ -1,13 +1,13 @@
 "use client";
-import { Category, Product } from "@/lib/types";
-import Image from "next/image";
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 import { Separator } from "@/components/ui/separator";
+import { Category, Product } from "@/lib/types";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
+import { useRef } from "react";
 
-import { ScrollShadow } from "@nextui-org/react";
 import { kaushan } from "@/app/fonts";
+import { ScrollShadow } from "@nextui-org/react";
 import { ArrowRight } from "lucide-react";
 
 interface EyeCatchProps {
@@ -52,8 +52,8 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
         </div>
         <p className=" text-medium">Uncompromised Quality in Every Shot</p>
       </div>
-      <section className="bg-zinc-900 grid grid-cols-3 h-[600px] gap-4">
-        <div className="relative col-span-1 overflow-hidden h-[600px]">
+      <section className="bg-zinc-900 grid grid-cols-3 h-[600px] sm:gap-4">
+        <div className="relative col-span-3 sm:col-span-1 overflow-hidden h-[600px]">
           <Image
             src={category?.billboard?.imageUrl}
             alt="product image"
@@ -71,7 +71,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
               </div>
             ))}
           </div>
-          <div className="absolute flex justify-center items-center  z-30 w-full h-full">
+          <div className="absolute flex justify-center items-center z-30 w-full h-full">
             <div className=" transform m-2 p-2 border bg-[#EDF1FE]/30">
               {"FROM".split("").map((char, index) => (
                 <div
@@ -94,7 +94,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
         <ScrollShadow
           hideScrollBar
           size={100}
-          className="col-span-2 lg:col-span-1 h-full select-none"
+          className="hidden sm:flex col-span-2 lg:col-span-1 h-full select-none"
         >
           <div className="embla w-[300px] min-w-[300px] ">
             <div className="embla__viewport" ref={emblaRef_left}>
@@ -145,13 +145,6 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             </div>
           </div>
         </ScrollShadow>
-        {/* {products.map((product) => (
-          <div
-            className="flex flex-col embla_container relative w-[300px] border border-green-500"
-            key={product.id}
-          >
-              </div>
-        ))} */}
       </section>
     </>
   );

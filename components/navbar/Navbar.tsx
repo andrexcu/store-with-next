@@ -2,21 +2,27 @@
 
 import Cart from "@/components/navbar/Cart";
 import Container from "@/components/ui/Container";
+import useScrollStore from "@/hooks/useScroll";
 import { Diamond } from "lucide-react";
 import { DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 const dmsans = DM_Sans({ subsets: ["latin"], weight: "500" });
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
+// const scrollToTop = () => {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: "smooth",
+//   });
+// };
 
 const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
+  const { scrollToTop } = useScrollStore();
+  const handleClick = (event: any) => {
+    event.preventDefault();
+    scrollToTop();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +39,8 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleClick = (event: any) => {
-    event.preventDefault(); // Prevents default link behavior if it's a link element
-    scrollToTop();
-  };
-
   return (
     <>
-      {/* <nav
-        className={` fixed w-full z-50  ${dmsans.className} 
-        ${showBackground ? "bg-[#111014] transition-colors duration-400" : ""}
-      `}> */}
       <nav
         className={` fixed bg-[#111014] w-full z-50  ${dmsans.className} 
         ${showBackground ? " transition-colors duration-400" : ""}
@@ -52,7 +49,7 @@ const Navbar = () => {
         <Container>
           <header
             className={`transition-all duration-300 ease-in flex justify-between items-center cursor-pointer select-none
-            ${showBackground ? "h-20" : "h-[120px]"}`}
+            ${showBackground ? "h-10" : "h-20"}`}
           >
             <Link href="/">
               <div
@@ -64,8 +61,6 @@ const Navbar = () => {
             
                 `}
                 >
-                  {/* ${showBackground ? "text-white" : "text-zinc-950 */}
-
                   <span>A</span>
                   <span className="opacity-90">I</span>
                   <span className="opacity-80">T</span>
@@ -84,11 +79,17 @@ const Navbar = () => {
                 
                 `}
                 />
-                {/* ${showBackground ? "bg-[#111014]" : "bg-white"} */}
               </div>
             </Link>
-
-            <Cart />
+            <div className="hidden sm:flex gap-8">
+              <Link
+                href="/categories/all"
+                className="text-slate-200 flex flex-col justify-end items-end pt-2 "
+              >
+                CATEGORIES
+              </Link>
+              <Cart />
+            </div>
           </header>
         </Container>
       </nav>
