@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 
 const Newsletter = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-full h-[1px] mt-24 bg-black gap-4 py-2 sm:p-0">
+    <section className="flex flex-col items-center justify-center w-full h-[175px] mt-24 bg-black gap-4 py-2 sm:p-0">
       <div>
         <p className="font-thin text-xl text-slate-400">GET ON THE LIST</p>
       </div>
