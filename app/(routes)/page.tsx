@@ -11,7 +11,7 @@ import OrderInfo from "@/components/sections/OrderInfo";
 import TopCategory from "@/components/sections/TopCategory";
 import Container from "@/components/ui/Container";
 
-export const revalidate = 0;
+// export const revalidate = 0;
 
 const HomePage = async () => {
   const categories = await getCategories();
@@ -37,12 +37,19 @@ const HomePage = async () => {
 
   return (
     <>
+      {/* <div className="w-full text-center h-full text-3xl bg-gradient-to-r from-[#EDF1FE] ">
+        <div className="absolute w-full h-full border border-red-500"></div>
+        <div className="mx-auto max-w-7xl">
+          <TopCategory categories={categories} products={products} />
+        </div>
+      </div> */}
+      <TopCategory categories={categories} products={products} />
       <Container>
-        <div className="py-8 text-center h-full text-3xl font-bold">
+        <div className="text-center h-full text-3xl">
           {/* {categories.map((category) => (
           <div key={category.id}>{category.id}</div>
         ))} */}
-          <TopCategory categories={categories} products={products} />
+
           <FeaturedProducts products={featuredProducts} />
           <Info billboard={billboard} />
           <EyeCatch category={category} products={photographyProducts} />

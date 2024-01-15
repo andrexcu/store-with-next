@@ -91,11 +91,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             ))}
           </div>
         </div>
-        <ScrollShadow
-          hideScrollBar
-          size={100}
-          className="hidden sm:flex col-span-2 lg:col-span-1 h-full select-none"
-        >
+        <div className="hidden sm:flex col-span-2 lg:col-span-1 h-full select-none overflow-hidden">
           <div className="embla w-[300px] min-w-[300px] ">
             <div className="embla__viewport" ref={emblaRef_left}>
               <div className="embla__container h-[600px]">
@@ -117,12 +113,8 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
               </div>
             </div>
           </div>
-        </ScrollShadow>
-        <ScrollShadow
-          hideScrollBar
-          size={100}
-          className="hidden lg:flex overflow-y-auto h-full"
-        >
+        </div>
+        <div className="hidden lg:flex overflow-hidden h-full">
           <div className="embla w-[300px]">
             <div className="embla__viewport" ref={emblaRef_right}>
               <div className="embla__container h-[600px]">
@@ -144,7 +136,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
               </div>
             </div>
           </div>
-        </ScrollShadow>
+        </div>
       </section>
     </>
   );

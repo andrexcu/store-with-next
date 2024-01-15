@@ -168,3 +168,9 @@
 .framed {
   box-shadow: -50px -50px 0 -35px var(--red), 50px 50px 0 -35px var(--red);
 }
+
+.moon {
+  position: absolute;
+  box-shadow: -15px 15px 0 15px #d9d2cc;
+  border-radius: 50%;
+}

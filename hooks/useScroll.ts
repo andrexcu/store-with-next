@@ -4,7 +4,7 @@ interface ScrollStoreState {
   scrollToTop: () => void;
 }
 
-const useScrollStore = create<ScrollStoreState>((set) => ({
+const useScrollStore = create<ScrollStoreState>(() => ({
   scrollToTop: () => {
     window.scrollTo({
       top: 0,
