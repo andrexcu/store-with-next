@@ -30,7 +30,7 @@ const InstagramPhotos = () => {
     <section className="flex items-end relative h-[320px]">
       <div className="absolute top-0 flex justify-center items-center w-full  z-30">
         {/* <Separator className="bg-zinc-200 absolute" /> */}
-        <div className="flex flex-col items-center gap-x-2 font-thin text-3xl bg-[#EDF1FE]/50 z-30 ">
+        <div className="flex flex-col items-center gap-x-2 font-thin text-3xl bg-[#EDF1FE]/50 z-30 px-2">
           <div className="flex items-center gap-2">
             <Instagram />
             Follow us on instagram

@@ -1,7 +1,6 @@
 import getBillboard from "@/actions/get-billboard";
 import getCategories from "@/actions/get-categories";
 import getCategory from "@/actions/get-category";
-import { getProducts } from "@/actions/get-products";
 import EyeCatch from "@/components/sections/EyeCatch";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Info from "@/components/sections/Info";
@@ -10,15 +9,12 @@ import Newsletter from "@/components/sections/Newsletter";
 import OrderInfo from "@/components/sections/OrderInfo";
 import TopCategory from "@/components/sections/TopCategory";
 import Container from "@/components/ui/Container";
+import { getProducts } from "@/actions/get-products";
 
 // export const revalidate = 0;
 
 const HomePage = async () => {
   const categories = await getCategories();
-  // const categoryId = category.id;
-  // const products = categories.map(async (category: Category) => {
-  //   await getProductsForCategory(category.id);
-  // });
 
   const productsPromises = categories.map((category) =>
     getProducts({ categoryId: category.id })
@@ -33,23 +29,12 @@ const HomePage = async () => {
   const photographyProducts = await getProducts({
     categoryId: "65a12e6435896fa930ad07e9",
   });
-  // console.log(category);
 
   return (
     <>
-      {/* <div className="w-full text-center h-full text-3xl bg-gradient-to-r from-[#EDF1FE] ">
-        <div className="absolute w-full h-full border border-red-500"></div>
-        <div className="mx-auto max-w-7xl">
-          <TopCategory categories={categories} products={products} />
-        </div>
-      </div> */}
       <TopCategory categories={categories} products={products} />
       <Container>
         <div className="text-center h-full text-3xl">
-          {/* {categories.map((category) => (
-          <div key={category.id}>{category.id}</div>
-        ))} */}
-
           <FeaturedProducts products={featuredProducts} />
           <Info billboard={billboard} />
           <EyeCatch category={category} products={photographyProducts} />

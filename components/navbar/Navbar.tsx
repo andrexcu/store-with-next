@@ -1,15 +1,28 @@
 "use client";
 
-import { dmsans } from "@/app/fonts";
+import { dmsans, blinker } from "@/app/fonts";
 import Cart from "@/components/navbar/Cart";
 import Container from "@/components/ui/Container";
 import useScrollStore from "@/hooks/useScroll";
 import Link from "next/link";
+import { Link as NextLink } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import {
+  Navbar as Nav,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Button,
+  NavbarMenuItem,
+  NavbarMenu,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
 
 const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
   const { scrollToTop } = useScrollStore();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuItems = ["Categories", "Products"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +40,107 @@ const Navbar = () => {
     };
   }, []);
 
+  const MenuClick = (e: any) => {
+    scrollToTop();
+    setIsMenuOpen(false);
+  };
   return (
     <>
-      <nav
-        className={` fixed bg-[#111014] w-full z-50  ${dmsans.className} 
+      <Nav
+        maxWidth="xl"
+        onMenuOpenChange={setIsMenuOpen}
+        className={`transition-all duration-300 ease-in fixed bg-[#111014] w-full z-50   ${
+          dmsans.className
+        } 
+        ${
+          showBackground
+            ? "h-20 transition-all ease-induration-400 "
+            : "transition-all duration-300 ease-in h-[120px]"
+        }`}
+      >
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden text-slate-200"
+          />
+          <NavbarBrand
+            className={`flex justify-between items-center cursor-pointer select-none`}
+          >
+            <Link
+              href="/"
+              scroll={false}
+              className=" relative ml-4 items-center flex lg:ml-0 gap-x-2"
+            >
+              <div
+                onClick={scrollToTop}
+                className={`flex flex-row items-center font-bold text-4xl z-10 p-1 tracking-wide text-white
+                `}
+              >
+                <span>A</span>
+                <span className="opacity-90">I</span>
+                <span className="opacity-80">T</span>
+                <span className="opacity-70">O</span>
+                <span className="opacity-60">U</span>
+                <span className="opacity-80">K</span>
+                <span className="opacity-60">A</span>
+                <span className="opacity-40">RT</span>
+              </div>
+              <div className="bg-[#02000d] border-2 border-[#EDF1FE] absolute left-20 rounded-full p-4" />
+              <div className="bg-[#02000d] border-2 border-[#EDF1FE] absolute left-24 rounded-full p-4" />
+              <div className="bg-red-500 border-2 border-[#EDF1FE] absolute left-28 rounded-full p-4" />
+
+              <div
+                className={` absolute bg-[#111014] left-32 rounded-full p-4
+                
+                `}
+              />
+            </Link>
+          </NavbarBrand>
+        </NavbarContent>
+
+        <NavbarContent className=" gap-8" justify="center">
+          <Link href="/categories" scroll={false} className="hidden sm:flex">
+            <div
+              className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
+              onClick={scrollToTop}
+            >
+              CATEGORIES
+            </div>
+          </Link>
+          <Link href="/categories" scroll={false} className="hidden sm:flex">
+            <div
+              className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
+              onClick={scrollToTop}
+            >
+              PRODUCTS
+            </div>
+          </Link>
+          <Cart />
+        </NavbarContent>
+
+        <NavbarMenu className="pt-6 overflow-hidden">
+          <NavbarMenuItem className="h-full flex flex-col items-center justify-center gap-4">
+            <Link href="/categories" scroll={false}>
+              <div
+                className="text-slate-700 text-3xl flex-col justify-end items-end"
+                onClick={scrollToTop}
+              >
+                Categories
+              </div>
+            </Link>
+            <Link href="/categories" scroll={false}>
+              <div
+                className="text-slate-700 text-3xl flex-col justify-end items-end"
+                onClick={scrollToTop}
+              >
+                Products
+              </div>
+            </Link>
+          </NavbarMenuItem>
+        </NavbarMenu>
+      </Nav>
+      {/* <nav
+        className={` fixed bg-[#111014] w-full z-50   ${dmsans.className} 
         ${showBackground ? " transition-colors duration-400 " : ""}
       `}
       >
@@ -42,12 +152,11 @@ const Navbar = () => {
             <Link
               href="/"
               scroll={false}
-              className="relative ml-4 items-center flex lg:ml-0 gap-x-2"
-              onClick={scrollToTop}
+              className=" relative ml-4 items-center flex lg:ml-0 gap-x-2"
             >
               <div
+                onClick={scrollToTop}
                 className={`flex flex-row items-center font-bold text-4xl z-10 p-1 tracking-wide text-white
-                  
                 `}
               >
                 <span>A</span>
@@ -55,13 +164,13 @@ const Navbar = () => {
                 <span className="opacity-80">T</span>
                 <span className="opacity-70">O</span>
                 <span className="opacity-60">U</span>
-                <span className="opacity-50">KA</span>
+                <span className="opacity-80">K</span>
+                <span className="opacity-60">A</span>
                 <span className="opacity-40">RT</span>
               </div>
-              <div className="bg-red-500 border absolute left-20 rounded-full p-4" />
-              <div className="bg-red-500 border absolute left-24 rounded-full p-4" />
-
-              <div className="bg-red-500 border absolute left-28 rounded-full p-4" />
+              <div className="bg-[#02000d] border-2 border-[#EDF1FE] absolute left-20 rounded-full p-4" />
+              <div className="bg-[#02000d] border-2 border-[#EDF1FE] absolute left-24 rounded-full p-4" />
+              <div className="bg-red-500 border-2 border-[#EDF1FE] absolute left-28 rounded-full p-4" />
 
               <div
                 className={` absolute bg-[#111014] left-32 rounded-full p-4
@@ -70,20 +179,28 @@ const Navbar = () => {
               />
             </Link>
 
-            <div className="flex gap-8">
+            <div className={`flex gap-8`}>
               <Link href="/categories" scroll={false}>
                 <div
+                  className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
                   onClick={scrollToTop}
-                  className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2 "
                 >
                   CATEGORIES
+                </div>
+              </Link>
+              <Link href="/categories" scroll={false}>
+                <div
+                  className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
+                  onClick={scrollToTop}
+                >
+                  PRODUCTS
                 </div>
               </Link>
               <Cart />
             </div>
           </header>
         </Container>
-      </nav>
+      </nav> */}
     </>
   );
 };

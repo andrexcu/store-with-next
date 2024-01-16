@@ -12,8 +12,8 @@ const Footer = () => {
   return (
     <footer className="bg-zinc-900 text-white w-full h-full">
       <div className="mx-auto py-10 max-w-[1920px]">
-        <div className="flex flex-col md:flex-row justify-between text-xs px-5 gap-4">
-          <div className="grid grid-cols-3 sm:flex flex-row justify-center gap-x-4 items-center text-sm  w-full md:w-auto">
+        <div className="flex flex-col md:flex-row justify-between text-xs sm:px-5 gap-4">
+          <div className="flex flex-wrap sm:grid-cols-5 lg:flex lg:flex-row justify-center items-center gap-x-4 text-sm  w-full md:w-auto">
             <p
               onClick={handleClick}
               className="cursor-pointer flex justify-center"
@@ -22,25 +22,25 @@ const Footer = () => {
             </p>
             <p
               onClick={handleClick}
-              className="cursor-pointer flex justify-center"
+              className="cursor-pointer flex text-center"
             >
               Legal Information
             </p>
             <p
               onClick={handleClick}
-              className="cursor-pointer flex justify-center"
+              className="cursor-pointer flex text-center"
             >
               Contact
             </p>
             <p
               onClick={handleClick}
-              className="cursor-pointer flex justify-center"
+              className="cursor-pointer flex text-center"
             >
               Terms Of Service
             </p>
             <p
               onClick={handleClick}
-              className="cursor-pointer flex justify-center"
+              className="cursor-pointer text-center flex"
             >
               Privacy Policy
             </p>

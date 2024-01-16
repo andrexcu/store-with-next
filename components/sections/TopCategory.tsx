@@ -28,6 +28,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   const [selected, setSelected] = useState(
     categories && categories.length > 0 ? categories[0].id : ""
   );
+
   const category = categories?.map((category) => category);
 
   const currentCategory = category?.filter((c) => c.id === selected);
@@ -36,14 +37,15 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   // console.log(categories);
   // console.log(products)
   const mappedProducts = products?.flatMap((product) => product);
-  const selectedCategory = mappedProducts?.filter(
+
+  const selectedCategoryProducts = mappedProducts?.filter(
     (m) => m.category.id === selected
   );
 
   // const [selectedUrl, setSelectedUrl] = useState(
   //   categories && categories.length > 0 && categories[0].billboard.imageUrl
   // );
-  // selectedCategory?.map((product) => console.log(product.name));
+  // selectedCategoryProducts?.map((product) => console.log(product.name));
 
   // console.log(currentCategory);
 
@@ -187,7 +189,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           <div className="grid grid-cols-3 gap-4 my-8">
             <div className="my-8  col-span-3 relative flex h-12 justify-center items-center w-full">
               <Separator className="bg-slate-400/80 absolute " />
-              <p className="font-thin bg-[#d9d2cc] backdrop-blur-sm z-30 p-1">
+              <p className="font-thin bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-1">
+                {/* [#d9d2cc] */}
                 {/* [#d9d2cc] */}
                 Special Products for{" "}
                 {currentCategory?.map((category) => category.name)}
@@ -195,7 +198,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             </div>
             <Carousel className="col-span-3 h-[400px] ">
               <CarouselContent className=" ">
-                {selectedCategory?.reverse().map((product) => (
+                {selectedCategoryProducts?.reverse().map((product) => (
                   <CarouselItem
                     key={product.id}
                     className="md:basis-1/2 lg:basis-1/3"

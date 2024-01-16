@@ -25,7 +25,11 @@ export const getProducts = async ({
     },
   });
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    next: {
+      revalidate: 1,
+    },
+  });
 
   return res.json();
 };
@@ -40,7 +44,11 @@ export const getProductsForCategory = async (
     },
   });
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    next: {
+      revalidate: 1,
+    },
+  });
 
   return res.json();
 };
