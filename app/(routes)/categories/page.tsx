@@ -7,9 +7,9 @@ import { getProducts } from "@/actions/get-products";
 const CategoriesPage = async () => {
   const categories = await getCategories();
 
-  const productsPromises = categories
-    .reverse()
-    .map((category) => getProducts({ categoryId: category.id }));
+  const productsPromises = categories.map((category) =>
+    getProducts({ categoryId: category.id })
+  );
 
   const products = await Promise.all(productsPromises);
 

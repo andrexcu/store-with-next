@@ -55,7 +55,7 @@ const CategoryFilter = ({ categories, products }: CategoryFilterProps) => {
       </div>
       <motion.div layout>
         <AnimatePresence>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {selected !== ""
               ? selectedCategoryProducts?.map((product) => (
                   <ProductItems key={product.id} product={product} />

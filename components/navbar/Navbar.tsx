@@ -22,7 +22,6 @@ const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
   const { scrollToTop } = useScrollStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuItems = ["Categories", "Products"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,22 +39,18 @@ const Navbar = () => {
     };
   }, []);
 
-  const MenuClick = (e: any) => {
-    scrollToTop();
-    setIsMenuOpen(false);
-  };
   return (
     <>
       <Nav
         maxWidth="xl"
         onMenuOpenChange={setIsMenuOpen}
-        className={`transition-all duration-300 ease-in fixed bg-[#111014] w-full z-50   ${
+        className={` transition-all duration-300 ease-in bg-[#111014] fixed  w-full z-50   ${
           dmsans.className
         } 
         ${
           showBackground
             ? "h-20 transition-all ease-induration-400 "
-            : "transition-all duration-300 ease-in h-[120px]"
+            : "transition-all duration-300 ease-in h-[120px] "
         }`}
       >
         <NavbarContent>

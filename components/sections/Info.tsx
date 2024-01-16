@@ -10,7 +10,6 @@ interface InfoProps {
 }
 
 const Info = ({ billboard }: InfoProps) => {
-  //   console.log(billboard);
   return (
     <section className="relative grid grid-cols-2 h-[400px] mt-24">
       <div className="bg-zinc-200 flex flex-col justify-center items-center col-span-2 lg:col-span-1 ">
@@ -25,13 +24,16 @@ const Info = ({ billboard }: InfoProps) => {
             Discover your style as AITOUKART Products lets you freely choose
             your preferred colors and sizes.
           </div>
-          <div className="flex items-center justify-center lg:justify-start w-full ">
-            <Scroller href="categories">
-              <Button variant="default" className="w-1/3 rounded-none">
+          <Scroller href="categories">
+            <div className=" flex flex-row justify-center lg:justify-start items-center w-full ">
+              <Button
+                variant="default"
+                className="flex items-center justify-center w-1/3 rounded-none focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0"
+              >
                 SHOP NOW
               </Button>
-            </Scroller>
-          </div>
+            </div>
+          </Scroller>
         </div>
       </div>
       <div className="hidden lg:flex relative">
@@ -40,7 +42,7 @@ const Info = ({ billboard }: InfoProps) => {
           alt="product image"
           fill
           sizes="100vh"
-          className="w-full h-full "
+          className="w-full h-full"
           placeholder="blur"
           blurDataURL={billboard?.imageUrl as string}
         />

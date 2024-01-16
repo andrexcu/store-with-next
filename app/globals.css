@@ -171,6 +171,12 @@
 
 .moon {
   position: absolute;
-  box-shadow: -15px 15px 0 15px #02000d;
+  box-shadow: -20px 20px 0 20px #02000d;
+  border-radius: 50%;
+}
+
+.bgmoon {
+  position: absolute;
+  box-shadow: -50px 50px 0 50px #02000d;
   border-radius: 50%;
 }
