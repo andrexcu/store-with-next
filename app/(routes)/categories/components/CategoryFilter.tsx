@@ -10,10 +10,15 @@ import { motion, AnimatePresence } from "framer-motion";
 interface CategoryFilterProps {
   categories: Category[] | null;
   products?: Product[][] | null;
+  categoryId?: string;
 }
 
-const CategoryFilter = ({ categories, products }: CategoryFilterProps) => {
-  const [selected, setSelected] = useState("");
+const CategoryFilter = ({
+  categories,
+  products,
+  categoryId,
+}: CategoryFilterProps) => {
+  const [selected, setSelected] = useState(`${categoryId ? categoryId : ""}`);
 
   const mappedProducts = products?.flatMap((product) => product);
 

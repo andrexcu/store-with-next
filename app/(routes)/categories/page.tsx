@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import React from "react";
 import CategoryFilter from "./components/CategoryFilter";
 import { getProducts } from "@/actions/get-products";
+import ModalProvider from "@/components/modal/modal-provider";
 
 const CategoriesPage = async () => {
   const categories = await getCategories();

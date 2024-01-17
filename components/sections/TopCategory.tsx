@@ -18,7 +18,7 @@ import { Input } from "@nextui-org/react";
 import { Gem } from "lucide-react";
 // import { getProductsForCategory } from "@/actions/get-products";
 import { kaushan } from "@/app/fonts";
-import { MotionDiv } from "../ui/motiondiv";
+import { motion } from "framer-motion";
 
 interface TopCategoryProps {
   categories: Category[] | null;
@@ -74,35 +74,36 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
   return (
     <NextProvider>
-      <section className={`p-5 mx-auto max-w-full h-[450px] `}>
+      <section className={`p-5 mx-auto max-w-full min-h-[450px] `}>
         <div
-          className="absolute top-0 left-0 bg-[#111014] w-full h-dvh"
-          style={{ opacity: scrollOpacity }}
+          className="absolute top-0 left-0  w-full h-dvh"
+          // bg-[#111014]
+          // style={{ opacity: scrollOpacity }}
         >
-          <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
-            <div className="bgmoon z-0 top-0 w-[700px] h-[800px]" />
-          </div>
+          {/* <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
+            <div className="bgmoon z-0 top-0 w-[700px] min-h-[800px]" />
+          </div> */}
         </div>
         <div className="p-4 text-center h-full text-3xl mx-auto max-w-7xl">
           <div
             className={`relative grid grid-cols-3 gap-x-4 select-none bg-cover bg-center`}
           >
             <div className={`relative`}>
-              <div className="relative z-10 flex font-thin text-3xl text-zinc-400 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <div className="relative z-10 flex font-thin text-3xl text-slate-800 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 <Gem size={38} />
                 Top
               </div>
-              <p className="relative z-10 font-thin text-3xl text-zinc-700 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="relative z-10 font-thin text-3xl text-slate-800 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 Categories
               </p>
-              <p className="relative z-10 font-thin text-3xl text-zinc-700 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="relative z-10 font-thin text-3xl text-slate-800 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 This
               </p>
-              <p className="relative z-10 font-thin text-3xl text-zinc-700 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="relative z-10 font-thin text-3xl text-slate-800 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 Month
               </p>
 
-              <div className="moon hidden sm:flex lg:hidden   top-5 w-[225px] h-[275px]" />
+              {/* <div className="moon hidden sm:flex lg:hidden   top-5 w-[225px] min-h-[275px]" /> */}
             </div>
 
             <div className="flex flex-row relative col-span-2 min-h-[400px] ">
@@ -113,7 +114,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 {categories?.slice(0, 3).map((category, index) => (
                   <div
                     key={category.id}
-                    className={`z-20 relative  bg-black/30 w-[150px] h-full rounded-xl overflow-hidden transition-all duration-300 ease-in-out 
+                    className={` relative w-[150px] h-full rounded-xl overflow-hidden transition-all duration-300 ease-in-out 
                 
               ${selected === category.id ? "w-full" : "w-[150px]"}`}
                     onClick={() => {
@@ -126,12 +127,13 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                       alt="billboard image"
                       fill
                       sizes="1096px, 822px"
-                      className=" object-cover absolute inset-0 transition-all duration-300 ease-in-out bg-black hover:opacity-60 rounded-xl"
+                      className="border border-zinc-100 rounded-xl object-cover absolute transition-opacity duration-300 ease-in-out hover:opacity-90"
                       placeholder="blur"
                       blurDataURL={category?.billboard?.imageUrl}
                     />
+
                     <p
-                      className={`absolute top-4 left-4 text-slate-200/60 ${
+                      className={`absolute top-4 left-4 text-slate-200/80 ${
                         kaushan.className
                       } ${
                         selected !== category.id
@@ -142,7 +144,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                       {category?.name}
                     </p>
                     <p
-                      className={`absolute top-52 left-4 text-slate-200/60 text-xl ${
+                      className={`absolute top-52 left-4 text-slate-200/80 text-xl ${
                         selected !== category.id
                           ? "opacity-0 transition-opacity duration-500"
                           : "opacity-100 transition-opacity duration-1000"
@@ -154,14 +156,14 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 ))}
               </div>
             </div>
-            <div className="hidden sm:flex absolute bottom-0 left-[-20px]">
-              <div className="relative h-[340px] w-[240px] "></div>
+            <div className="hidden sm:flex absolute bottom-2 left-[-20px]">
+              <div className="relative min-h-[340px] w-[240px] "></div>
               <Image
                 src={dynamicUrl}
                 alt="product image"
                 fill
                 sizes="100vh"
-                className="object-cover w-full opacity-60 h-full"
+                className="object-cover w-full opacity-80 h-full"
                 placeholder="blur"
                 blurDataURL={dynamicUrl}
               />
@@ -203,40 +205,49 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           </div>
         </div>
       </section>
-      <section className="mb-20 mx-auto max-w-[1920px] h-[500px] ">
-        <div className="text-center h-full text-3xl mx-auto max-w-7xl">
-          <div className="grid grid-cols-3 gap-4 my-8">
-            <div className="my-8  col-span-3 relative flex h-12 justify-center items-center w-full ">
+      <section className="mb-20 mx-auto max-w-[1920px] min-h-[500px] ">
+        <div className="text-center h-full text-3xl mx-auto max-w-7xl ">
+          <div className="grid grid-cols-3 gap-4 my-8 ">
+            <div className="mb-8  col-span-3 relative flex h-12 justify-center items-center w-full  ">
               <Separator className="bg-slate-400/80 absolute " />
 
+              {/* <p
+                className={`absolute bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 min-h-[50px]`}
+              >
+                <span className="text-2xl">Products for this Category</span>
+              </p> */}
               {categories?.slice(0, 3)?.map((category) => (
                 <p
                   key={category.id}
-                  className={`absolute font-thin bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-1 ${
+                  className={`absolute bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 min-h-[50px] ${
                     selected !== category.id
                       ? "opacity-0 transition-opacity duration-300"
                       : "opacity-100 transition-opacity duration-300"
                   }`}
                 >
-                  Special Products for {category.name}
+                  <span className="text-2xl font-thin">
+                    Products for {category.name}
+                  </span>
                 </p>
               ))}
             </div>
-            <Carousel className="col-span-3 h-[400px] ">
+            <Carousel className="col-span-3 min-h-[400px] ">
               <CarouselContent className=" ">
                 {selectedCategoryProducts?.reverse().map((product) => (
                   <CarouselItem
                     key={product.id}
-                    className="md:basis-1/2 lg:basis-1/3"
+                    className="md:basis-1/2 lg:basis-1/3 "
                   >
                     <Card>
                       <CardContent
-                        className={`group transition-all duration-300 ease-in-out relative w-full flex h-[350px] items-center justify-center overflow-hidden border-2 
-                      ${
-                        scrollOpacity === 0
-                          ? "border-slate-950"
-                          : "border-slate-200"
-                      }`}
+                        className={` group border-slate-950 bg-black relative w-full flex min-h-[350px] items-center justify-center overflow-hidden border-2 
+                        `}
+                        // ${
+                        //   scrollOpacity === 0
+                        //     ? "border-slate-950"
+                        //     : "border-slate-200"
+                        // }
+                        // transition-all duration-300 ease-in-out
                       >
                         <Image
                           src={product.images[0].url}

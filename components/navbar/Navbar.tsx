@@ -53,6 +53,7 @@ const Navbar = () => {
             : "transition-all duration-300 ease-in h-[120px] "
         }`}
       >
+        {/* #fff7ea */}
         <NavbarContent>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}

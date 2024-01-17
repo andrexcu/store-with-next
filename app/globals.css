@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --red: #18181b;
+    --col: #18181b;
     --bgColor: bisque;
   }
 
@@ -166,7 +166,7 @@
 }
 
 .framed {
-  box-shadow: -50px -50px 0 -35px var(--red), 50px 50px 0 -35px var(--red);
+  box-shadow: -50px -50px 0 -35px var(--col), 50px 50px 0 -35px var(--col);
 }
 
 .moon {

@@ -10,6 +10,7 @@ import OrderInfo from "@/components/sections/OrderInfo";
 import TopCategory from "@/components/sections/TopCategory";
 import Container from "@/components/ui/Container";
 import { getProducts } from "@/actions/get-products";
+import Client from "@/components/ui/Client";
 
 // export const revalidate = 0;
 
@@ -33,6 +34,7 @@ const HomePage = async () => {
   return (
     <>
       <TopCategory categories={categories} products={products} />
+
       <Container>
         <div className="text-center h-full text-3xl">
           <FeaturedProducts products={featuredProducts} />

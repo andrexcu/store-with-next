@@ -11,7 +11,7 @@ interface InfoProps {
 
 const Info = ({ billboard }: InfoProps) => {
   return (
-    <section className="relative grid grid-cols-2 h-[400px] mt-24">
+    <section className="relative grid grid-cols-2 h-[400px] mt-28">
       <div className="bg-zinc-200 flex flex-col justify-center items-center col-span-2 lg:col-span-1 ">
         <div className="w-full sm:w-[420px] h-full flex flex-col justify-center gap-2 text-start border min-w-0">
           <p className="text-2xl text-slate-950 flex flex-col lg:flex-row justify-start items-center gap-2">

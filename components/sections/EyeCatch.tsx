@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { kaushan } from "@/app/fonts";
 import { ScrollShadow } from "@nextui-org/react";
 import { ArrowRight } from "lucide-react";
+import Scroller from "@/components/ui/Scroller";
 
 interface EyeCatchProps {
   category: Category;
@@ -47,7 +48,9 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             className={` bg-[#EDF1FE]/70 z-30 p-2 flex items-center gap-x-2  ${kaushan.className}`}
           >
             Photography{" "}
-            <ArrowRight className="hover:cursor-pointer hover:translate-x-2 transition duration-300" />
+            <Scroller href="categories">
+              <ArrowRight className="hover:cursor-pointer hover:translate-x-2 transition duration-300" />
+            </Scroller>
           </p>
         </div>
         <p className=" text-medium">Uncompromised Quality in Every Shot</p>
