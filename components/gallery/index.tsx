@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import { Image as ImageType } from "@/lib/types";
 import Image from "next/image";
+import { useAnimate, motion } from "framer-motion";
 
 interface GalleryProps {
   images: ImageType[];
@@ -10,16 +11,22 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const [selectedImageId, setSelectedImageId] = useState(images[0].id);
-
+  const [scope, animate] = useAnimate();
   return (
     <div className="flex w-full flex-col gap-2">
       <Card>
-        <CardBody className=" aspect-square ">
-          {images.map((image, index) => (
-            <div key={image.id} className="rounded-xl">
-              {image.id === selectedImageId && (
-                <>
-                  {/* <div className="aspect-square relative h-full w-full overflow-hidden rounded-lg bg-black"> */}
+        {images.map((image, index) => (
+          <React.Fragment key={image.id}>
+            {image.id === selectedImageId && (
+              <>
+                {/* <div className="aspect-square relative h-full w-full overflow-hidden rounded-lg bg-black"> */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                  ref={scope}
+                  className="relative rounded-xl aspect-square"
+                >
                   <Image
                     src={image.url}
                     alt="billboard image"
@@ -29,12 +36,11 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                     placeholder="blur"
                     blurDataURL={image.url}
                   />
-                  {/* </div> */}
-                </>
-              )}
-            </div>
-          ))}
-        </CardBody>
+                </motion.div>
+              </>
+            )}
+          </React.Fragment>
+        ))}
       </Card>
 
       <Tabs

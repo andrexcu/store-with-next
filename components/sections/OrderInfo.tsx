@@ -3,7 +3,7 @@ import React from "react";
 
 const OrderInfo = () => {
   return (
-    <section className="relative grid grid-cols-1 sm:grid-cols-3 h-[420px] sm:h-[200px] mt-24 gap-4">
+    <section className="relative grid grid-cols-1 sm:grid-cols-3 h-[420px] sm:h-[200px] my-24 gap-4">
       <div className="sm:col-span-3 ">
         <p className="text-2xl">Seamless Shopping Experience</p>
       </div>

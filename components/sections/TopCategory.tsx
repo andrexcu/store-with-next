@@ -15,10 +15,12 @@ import {
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@nextui-org/react";
-import { Gem } from "lucide-react";
+import { Expand, Gem, ShoppingCart } from "lucide-react";
 // import { getProductsForCategory } from "@/actions/get-products";
 import { kaushan } from "@/app/fonts";
 import { motion } from "framer-motion";
+import IconButton from "../ui/icon-button";
+import usePreviewModal from "@/hooks/use-preview-modal";
 
 interface TopCategoryProps {
   categories: Category[] | null;
@@ -69,7 +71,12 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const previewModal = usePreviewModal();
 
+  const onPreview = (product: Product) => {
+    // e.preventDefault();
+    previewModal.onOpen(product);
+  };
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
   return (
@@ -119,15 +126,14 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               ${selected === category.id ? "w-full" : "w-[150px]"}`}
                     onClick={() => {
                       setSelected(category.id);
-                      // setSelectedUrl(category.billboard.imageUrl);
                     }}
                   >
                     <Image
                       src={category?.billboard?.imageUrl}
                       alt="billboard image"
                       fill
-                      sizes="1096px, 822px"
-                      className="border border-zinc-100 rounded-xl object-cover absolute transition-opacity duration-300 ease-in-out hover:opacity-90"
+                      sizes="100vw, 100vh"
+                      className=" rounded-xl object-cover absolute transition-opacity duration-300 ease-in-out hover:opacity-90"
                       placeholder="blur"
                       blurDataURL={category?.billboard?.imageUrl}
                     />
@@ -209,23 +215,19 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
         <div className="text-center h-full text-3xl mx-auto max-w-7xl ">
           <div className="grid grid-cols-3 gap-4 my-8 ">
             <div className="mb-8  col-span-3 relative flex h-12 justify-center items-center w-full  ">
-              <Separator className="bg-slate-400/80 absolute " />
-
-              {/* <p
-                className={`absolute bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 min-h-[50px]`}
-              >
-                <span className="text-2xl">Products for this Category</span>
-              </p> */}
+              <Separator className="bg-zinc-700/80 absolute " />
               {categories?.slice(0, 3)?.map((category) => (
                 <p
                   key={category.id}
+                  // bg-[#EDF1FE]/70
+                  // bg-[#111014]
                   className={`absolute bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 min-h-[50px] ${
                     selected !== category.id
                       ? "opacity-0 transition-opacity duration-300"
                       : "opacity-100 transition-opacity duration-300"
                   }`}
                 >
-                  <span className="text-2xl font-thin">
+                  <span className="text-2xl font-thin text-zinc-950 ">
                     Products for {category.name}
                   </span>
                 </p>
@@ -240,14 +242,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                   >
                     <Card>
                       <CardContent
-                        className={` group border-slate-950 bg-black relative w-full flex min-h-[350px] items-center justify-center overflow-hidden border-2 
-                        `}
-                        // ${
-                        //   scrollOpacity === 0
-                        //     ? "border-slate-950"
-                        //     : "border-slate-200"
-                        // }
-                        // transition-all duration-300 ease-in-out
+                        className={` group border-slate-950 bg-black relative w-full flex min-h-[350px] items-center justify-center overflow-hidden border-2 `}
                       >
                         <Image
                           src={product.images[0].url}
@@ -259,15 +254,32 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                           placeholder="blur"
                           blurDataURL={product.images[0].url}
                         />
-                        {/* <p className="absolute bottom-0 text-lg bg-[#EDF1FE]/50 border-t-2 w-full border-zinc-950 backdrop-blur-sm z-30 p-1">
-                          {product.name}
-                        </p> */}
 
                         <p className="select-none flex items-center justify-center  absolute right-0 bottom-0 text-lg w-full h-full p-1 ">
                           <span className="max-w-[230px] text-zinc-800 px-2 border bg-[#EDF1FE]/50">
                             {product.name}
                           </span>
                         </p>
+
+                        <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+                          <div className="flex gap-x-6 justify-center">
+                            <IconButton
+                              onClick={() => onPreview(product)}
+                              icon={
+                                <Expand size={20} className="text-gray-600" />
+                              }
+                            />
+                            <IconButton
+                              // onClick={onAddToCart}
+                              icon={
+                                <ShoppingCart
+                                  size={20}
+                                  className="text-gray-600"
+                                />
+                              }
+                            />
+                          </div>
+                        </div>
                       </CardContent>
                     </Card>
                   </CarouselItem>

@@ -7,9 +7,10 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import { kaushan } from "@/app/fonts";
-import { ScrollShadow } from "@nextui-org/react";
-import { ArrowRight } from "lucide-react";
 import Scroller from "@/components/ui/Scroller";
+import { ArrowRight, Expand, ShoppingCart } from "lucide-react";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import IconButton from "@/components/ui/icon-button";
 
 interface EyeCatchProps {
   category: Category;
@@ -21,12 +22,14 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
     Autoplay({
       delay: 1000,
       stopOnInteraction: false,
+      stopOnMouseEnter: true,
     })
   );
   const autoplay_right = useRef(
     Autoplay({
       delay: 1000,
       stopOnInteraction: false,
+      stopOnMouseEnter: true,
     })
   );
 
@@ -38,19 +41,23 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
     { direction: "ltr", loop: true, axis: "y", startIndex: 3 },
     [autoplay_right.current]
   );
-
+  const previewModal = usePreviewModal();
+  const onPreview = (product: Product) => {
+    // e.preventDefault();
+    previewModal.onOpen(product);
+  };
   return (
     <>
       <div className="my-12">
         <div className=" col-span-3 relative flex h-12 justify-center items-center w-full">
-          <Separator className="bg-zinc-200 absolute" />
+          <Separator className="bg-zinc-700/80 absolute" />
           <p
-            className={` bg-[#EDF1FE]/70 z-30 p-2 flex items-center gap-x-2  ${kaushan.className}`}
+            className={` bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 flex items-center gap-x-2  ${kaushan.className}`}
           >
             Photography{" "}
-            <Scroller href="categories">
+            {/* <Scroller href="categories">
               <ArrowRight className="hover:cursor-pointer hover:translate-x-2 transition duration-300" />
-            </Scroller>
+            </Scroller> */}
           </p>
         </div>
         <p className=" text-medium">Uncompromised Quality in Every Shot</p>
@@ -99,8 +106,8 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             <div className="embla__viewport" ref={emblaRef_left}>
               <div className="embla__container h-[600px]">
                 {products.map((product) => (
-                  <div className=" embla__slide" key={product.id}>
-                    <div className="embla__slide__inner min-w-[300px] h-[300px] border-2 border-[#EDF1FE] overflow-y-hidden overflow-x-hidden">
+                  <div className="group embla__slide" key={product.id}>
+                    <div className="relative embla__slide__inner min-w-[300px] h-[300px] border-2 border-[#EDF1FE] overflow-y-hidden overflow-x-hidden">
                       <Image
                         src={product.images[0].url}
                         alt="product image"
@@ -110,6 +117,25 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
                         placeholder="blur"
                         blurDataURL={product.images[0].url}
                       />
+                      <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+                        <div className="flex gap-x-6 justify-center">
+                          <IconButton
+                            onClick={() => onPreview(product)}
+                            icon={
+                              <Expand size={20} className="text-gray-600" />
+                            }
+                          />
+                          <IconButton
+                            // onClick={onAddToCart}
+                            icon={
+                              <ShoppingCart
+                                size={20}
+                                className="text-gray-600"
+                              />
+                            }
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -122,8 +148,8 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             <div className="embla__viewport" ref={emblaRef_right}>
               <div className="embla__container h-[600px]">
                 {products.map((product) => (
-                  <div className="embla__slide " key={product.id}>
-                    <div className="embla__slide__inner h-[300px] border-2 border-[#EDF1FE]">
+                  <div className="group embla__slide " key={product.id}>
+                    <div className="relative embla__slide__inner h-[300px] border-2 border-[#EDF1FE]">
                       <Image
                         src={product.images[1].url}
                         alt="product image"
@@ -133,6 +159,25 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
                         placeholder="blur"
                         blurDataURL={product.images[0].url}
                       />
+                      <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+                        <div className="flex gap-x-6 justify-center">
+                          <IconButton
+                            onClick={() => onPreview(product)}
+                            icon={
+                              <Expand size={20} className="text-gray-600" />
+                            }
+                          />
+                          <IconButton
+                            // onClick={onAddToCart}
+                            icon={
+                              <ShoppingCart
+                                size={20}
+                                className="text-gray-600"
+                              />
+                            }
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}

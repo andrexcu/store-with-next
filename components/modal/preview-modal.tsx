@@ -42,6 +42,7 @@ const PreviewModal = () => {
           size="3xl"
           backdrop="blur"
           className="bg-[#F2F7FD]/80 backdrop-blur-md"
+          shouldBlockScroll={false}
         >
           <ModalContent className="p-4">
             <ModalBody className="">

@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
-import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
+import { kaushan } from "@/app/fonts";
 import { Instagram } from "lucide-react";
+import Image from "next/image";
 
 const InstagramPhotos = () => {
   const links = [
@@ -30,7 +29,9 @@ const InstagramPhotos = () => {
     <section className="flex items-end relative h-[320px]">
       <div className="absolute top-0 flex justify-center items-center w-full  z-30">
         {/* <Separator className="bg-zinc-200 absolute" /> */}
-        <div className="flex flex-col items-center gap-x-2 font-thin text-3xl bg-[#EDF1FE]/50 z-30 px-2">
+        <div
+          className={`flex flex-col items-center gap-x-2 text-3xl bg-[#EDF1FE]/70 z-30 px-2 ${kaushan.className} font-thin`}
+        >
           <div className="flex items-center gap-2">
             <Instagram />
             Follow us on instagram
@@ -41,7 +42,7 @@ const InstagramPhotos = () => {
         </div>
       </div>
 
-      <div className="w-full  bg-slate-900 h-[300px] ">
+      <div className="w-full  bg-[#111014] h-[300px] select-none">
         <div className="grid grid-cols-3 xl:grid-cols-6 h-full mx-auto max-w-[1920px]">
           {links?.map((link, index) => (
             <div key={link?.url} className="relative ">

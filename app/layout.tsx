@@ -26,9 +26,12 @@ export default function RootLayout({
     <html lang="en" className={`overflow-x-hidden `}>
       <body
         className={`overflow-x-hidden  relative ${urbanist.className}  
-        bg-gradient-to-r from-[#EDF1FE]
+        bg-gradient-to-r from-[#EDF1FE] to-[#d3d1ce] 
+       
         `}
       >
+        {/* from-[#d8d0c5] to-[#EDF1FE] */}
+        {/* from-[#EDF1FE] to-[#d8d0c5] */}
         {/* [#fff7ea]  */}
         {/* <div className="w-full bg-[#FFFAFA] fixed min-h-[50px] z-50 top-0"></div> */}
         <ModalProvider />

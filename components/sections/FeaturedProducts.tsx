@@ -6,6 +6,9 @@ import React, { useEffect } from "react";
 import Client from "@/components/ui/Client";
 import { MotionDiv, MotionLi, MotionUl } from "@/components/ui/motiondiv";
 import { motion, useAnimate, useInView } from "framer-motion";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import IconButton from "@/components/ui/icon-button";
+import { Expand, ShoppingCart } from "lucide-react";
 
 interface FeaturedProductsProps {
   products: Product[] | null;
@@ -23,6 +26,13 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
       enterAnimation();
     }
   }, [isInView]);
+
+  const previewModal = usePreviewModal();
+
+  const onPreview = (product: Product) => {
+    // e.preventDefault();
+    previewModal.onOpen(product);
+  };
   return (
     <div
       className="relative justify-center flex flex-col gap-4 items-center max-w-7xl mx-auto bg-[#18181b]"
@@ -52,7 +62,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                   sizes="100vh"
                   className={`
            transform group-hover:scale-110
-          object-cover w-full h-full transition-all duration-300 ease-in-out bg-black group-hover:opacity-80 
+          object-cover w-full h-full transition-all duration-300 ease-in-out group-hover:opacity-80 
           `}
                   placeholder="blur"
                   // ${index === 0 ? "rounded-tl-full" : ""}
@@ -63,6 +73,21 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                     {product.name}
                   </span>
                 </p>
+
+                <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+                  <div className="flex gap-x-6 justify-center">
+                    <IconButton
+                      onClick={() => onPreview(product)}
+                      icon={<Expand size={20} className="text-gray-600" />}
+                    />
+                    <IconButton
+                      // onClick={onAddToCart}
+                      icon={
+                        <ShoppingCart size={20} className="text-gray-600" />
+                      }
+                    />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -90,6 +115,18 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                   {product.name}
                 </span>
               </p>
+              <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+                <div className="flex gap-x-6 justify-center">
+                  <IconButton
+                    onClick={() => onPreview(product)}
+                    icon={<Expand size={20} className="text-gray-600" />}
+                  />
+                  <IconButton
+                    // onClick={onAddToCart}
+                    icon={<ShoppingCart size={20} className="text-gray-600" />}
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>
