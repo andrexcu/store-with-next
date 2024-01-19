@@ -46,6 +46,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
     // e.preventDefault();
     previewModal.onOpen(product);
   };
+
   return (
     <>
       <div className="my-12">
@@ -54,15 +55,12 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
           <p
             className={` bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 flex items-center gap-x-2  ${kaushan.className}`}
           >
-            Photography{" "}
-            {/* <Scroller href="categories">
-              <ArrowRight className="hover:cursor-pointer hover:translate-x-2 transition duration-300" />
-            </Scroller> */}
+            Photography
           </p>
         </div>
-        <p className=" text-medium">Uncompromised Quality in Every Shot</p>
+        <p className="mt-4 text-medium">Uncompromised Quality in Every Shot</p>
       </div>
-      <section className="bg-zinc-900 grid grid-cols-3 h-[600px] sm:gap-4">
+      <section className="bg-zinc-900 grid grid-cols-3 h-[600px] sm:20">
         <div className="relative col-span-3 sm:col-span-1 overflow-hidden h-[600px]">
           <Image
             src={category?.billboard?.imageUrl}
@@ -143,6 +141,44 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
             </div>
           </div>
         </div>
+        {/* <div className="hidden lg:flex relative col-span-3 sm:col-span-1 overflow-hidden h-[600px]">
+          <Image
+            src="https://utfs.io/f/66112390-87ba-42fd-862c-c77399030e10-mkplg6.jpg"
+            alt="product image"
+            fill
+            sizes="100vh"
+            className="object-cover w-full "
+            placeholder="blur"
+            blurDataURL="https://utfs.io/f/66112390-87ba-42fd-862c-c77399030e10-mkplg6.jpg"
+          />
+
+          <div className="absolute transform m-2 p-2 border bg-[#EDF1FE]/30">
+            {"HIGH".split("").map((char, index) => (
+              <div key={index} className="font-thin whitespace-nowrap ">
+                {char}
+              </div>
+            ))}
+          </div>
+          <div className="text-neutral-50 absolute flex justify-center items-center z-30 w-full h-full">
+            <div className=" transform m-2 p-2 border bg-[#EDF1FE]/30">
+              {"QUALITY".split("").map((char, index) => (
+                <div
+                  key={index}
+                  className="select-none font-thin whitespace-nowrap"
+                >
+                  {char}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="absolute bottom-0 right-0 transform m-2 p-2 border bg-[#EDF1FE]/30">
+            {"CAMERAS".split("").map((char, index) => (
+              <div key={index} className="font-thin whitespace-nowrap">
+                {char}
+              </div>
+            ))}
+          </div>
+        </div> */}
         <div className="hidden lg:flex overflow-hidden h-full">
           <div className="embla w-[300px]">
             <div className="embla__viewport" ref={emblaRef_right}>

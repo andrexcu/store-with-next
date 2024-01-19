@@ -55,7 +55,7 @@ const ProductItems = ({ product }: ProductItemsProps) => {
           <div className="flex flex-col p-2 ">
             <p>{product?.name}</p>
             <div className="flex justify-between w-full">
-              <span>${product.price}</span>
+              <span className="font-bold">${product.price}</span>
 
               <p className="flex gap-x-2">
                 <span>{product.size.value}</span>

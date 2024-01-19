@@ -46,7 +46,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex justify-center items-center flex-row gap-x-4 text-sm ">
-            <p className="text-sm lg:pt-2">by Jan Andrex</p>
+            <p className="text-sm lg:pt-2">All Rights Reserved.</p>
             <div
               className="rounded-full border p-1 cursor-pointer"
               onClick={handleClick}
