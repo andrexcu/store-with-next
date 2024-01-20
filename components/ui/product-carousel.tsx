@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import IconButton from "@/components/ui/icon-button";
 import { Product } from "@/lib/types";
 import { Expand, ShoppingCart } from "lucide-react";
 import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
 
 interface ProductCarouselProps {
   selectedCategoryProducts: Product[];
@@ -21,6 +22,7 @@ interface ProductCarouselProps {
 const ProductCarousel = ({
   selectedCategoryProducts,
 }: ProductCarouselProps) => {
+  const cart = useCart();
   const previewModal = usePreviewModal();
 
   const onPreview = (product: Product) => {
@@ -28,6 +30,9 @@ const ProductCarousel = ({
     previewModal.onOpen(product);
   };
 
+  const onAddToCart = (data: Product) => {
+    cart.addItem(data);
+  };
   return (
     <Carousel className="col-span-3 min-h-[400px] ">
       <CarouselContent className="">
@@ -64,7 +69,7 @@ const ProductCarousel = ({
                       icon={<Expand size={20} className="text-gray-600" />}
                     />
                     <IconButton
-                      // onClick={onAddToCart}
+                      onClick={() => onAddToCart(product)}
                       icon={
                         <ShoppingCart size={20} className="text-gray-600" />
                       }

@@ -7,6 +7,7 @@ import { urbanist } from "@/app/fonts";
 import Footer from "@/components/footer/Footer";
 import ModalProvider from "@/components/modal/modal-provider";
 import usePreviewModal from "@/hooks/use-preview-modal";
+import { Toaster } from "@/components/ui/sonner";
 
 // urbanist
 // const urbanist = Urbanist({ subsets: ["latin"] });
@@ -35,6 +36,7 @@ export default function RootLayout({
         {/* [#fff7ea]  */}
         {/* <div className="w-full bg-[#FFFAFA] fixed min-h-[50px] z-50 top-0"></div> */}
         <ModalProvider />
+        <Toaster position="bottom-right" />
         <Navbar />
         <section className="pt-28">{children}</section>
         <Footer />

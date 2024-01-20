@@ -1,3 +1,4 @@
+"use client";
 import IconButton from "@/components/ui/icon-button";
 import { MotionDiv } from "@/components/ui/motiondiv";
 import usePreviewModal from "@/hooks/use-preview-modal";

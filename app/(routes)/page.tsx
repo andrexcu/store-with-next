@@ -35,9 +35,9 @@ const HomePage = async () => {
     <>
       <TopCategory categories={categories} products={products} />
 
+      <FeaturedProducts products={featuredProducts} />
       <Container>
         <div className="text-center h-full text-3xl">
-          <FeaturedProducts products={featuredProducts} />
           <Info billboard={billboard} />
           <EyeCatch category={category} products={photographyProducts} />
           <Newsletter />

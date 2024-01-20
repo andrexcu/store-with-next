@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Category, Product } from "@/lib/types";
+import { Category, Color, Product, Size } from "@/lib/types";
 import Image from "next/image";
 import React, { useState } from "react";
 import ProductItems from "./ProductItems";
@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from "framer-motion";
 interface CategoryFilterProps {
   categories: Category[] | null;
   products?: Product[][] | null;
+  sizes?: Size[] | null;
+  colors?: Color[] | null;
   categoryId?: string;
 }
 
@@ -17,6 +19,8 @@ const CategoryFilter = ({
   categories,
   products,
   categoryId,
+  sizes,
+  colors,
 }: CategoryFilterProps) => {
   const [selected, setSelected] = useState(`${categoryId ? categoryId : ""}`);
 
@@ -38,25 +42,38 @@ const CategoryFilter = ({
       ) : (
         <h1 className="text-3xl font-bold">All Categories</h1>
       )}
-      <div className="gap-4 flex overflow-x-auto">
-        <Button
-          variant={`${selected === "" ? "default" : "outline"}`}
-          className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-          onClick={() => setSelected("")}
-        >
-          ALL
-        </Button>
-        {categories?.map((category) => (
-          <div className="flex items-center" key={category.id}>
+      <div className="gap-4 flex overflow-x-auto  flex-between">
+        <div className="flex gap-4 overflow-x-auto ">
+          <Button
+            variant={`${selected === "" ? "default" : "outline"}`}
+            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+            onClick={() => setSelected("")}
+          >
+            ALL
+          </Button>
+          {categories?.map((category) => (
+            <div className="flex items-center" key={category.id}>
+              <Button
+                variant={`${category.id === selected ? "default" : "outline"}`}
+                className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+                onClick={() => setSelected(category.id)}
+              >
+                {category.name}
+              </Button>
+            </div>
+          ))}
+        </div>
+        <div className="w-1/3  flex justify-center">
+          {sizes?.map((size) => (
             <Button
-              variant={`${category.id === selected ? "default" : "outline"}`}
+              variant="ghost"
               className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-              onClick={() => setSelected(category.id)}
+              key={size.id}
             >
-              {category.name}
+              {size.value}
             </Button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <motion.div layout>
         <AnimatePresence>
