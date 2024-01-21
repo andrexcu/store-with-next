@@ -55,7 +55,7 @@ const CartItem = ({ product }: { product: Product }) => {
           </div>
         </div>
 
-        <div className="flex flex-col space-y-1 font-medium">
+        <div className="flex flex-col space-y-1 font-medium pr-4">
           <span className="ml-auto line-clamp-1 text-sm">${product.price}</span>
         </div>
       </div>

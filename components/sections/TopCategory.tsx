@@ -59,7 +59,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const previewModal = usePreviewModal();
 
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
@@ -80,10 +79,10 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             className={`relative grid grid-cols-4 gap-x-4 select-none bg-cover bg-center`}
           >
             <div className={`pt-20 relative`}>
-              <div className="relative z-20 flex font-thin text-3xl text-zinc-800 sm:text-4xl md:text-5xl lg:text-6xl text-start">
+              <p className="relative z-20 flex font-thin text-3xl text-zinc-800 sm:text-4xl md:text-5xl lg:text-6xl text-start">
                 {/* <Gem size={38} /> */}
                 Discover.
-              </div>
+              </p>
               <p className="relative z-20 font-thin text-3xl text-zinc-900 sm:text-4xl md:text-5xl lg:text-6xl text-start">
                 Style.
               </p>
@@ -205,10 +204,12 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 ))}
               </Tabs>
             </div>
-            {selectedCategoryProducts && (
+            {selectedCategoryProducts ? (
               <ProductCarousel
                 selectedCategoryProducts={selectedCategoryProducts}
               />
+            ) : (
+              ""
             )}
           </div>
         </div>

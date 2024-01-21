@@ -36,7 +36,7 @@ const ProductCarousel = ({
   return (
     <Carousel className="col-span-3 min-h-[400px] ">
       <CarouselContent className="">
-        {selectedCategoryProducts?.reverse().map((product) => (
+        {selectedCategoryProducts?.map((product) => (
           <CarouselItem
             key={product.id}
             className="md:basis-1/2 lg:basis-1/3 bg-transparent"
@@ -56,11 +56,11 @@ const ProductCarousel = ({
                   blurDataURL={product.images[1].url}
                 />
 
-                <p className=" select-none flex items-center justify-center  absolute right-0 bottom-0 text-lg w-full h-full p-1 ">
-                  <span className="max-w-[230px] text-zinc-800 px-2 border bg-[#EDF1FE]/30">
+                <div className=" select-none flex items-center justify-center  absolute right-0 bottom-0 text-lg w-full h-full p-1 ">
+                  <p className="max-w-[230px] text-zinc-800 px-2 border bg-[#EDF1FE]/30">
                     {product.name}
-                  </span>
-                </p>
+                  </p>
+                </div>
 
                 <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
                   <div className="flex gap-x-6 justify-center">

@@ -95,11 +95,13 @@ const Navbar = () => {
         </NavbarContent>
 
         <NavbarContent className=" gap-8" justify="center">
-          <Link href="/categories" scroll={false} className="hidden sm:flex">
-            <div
-              className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
-              onClick={scrollToTop}
-            >
+          <Link
+            href="/categories"
+            scroll={false}
+            className="hidden sm:flex"
+            onClick={scrollToTop}
+          >
+            <div className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2">
               CATEGORIES
             </div>
           </Link>
@@ -107,11 +109,9 @@ const Navbar = () => {
             href="/products/65a0d513abe0a553a4b79a79"
             scroll={false}
             className="hidden sm:flex"
+            onClick={scrollToTop}
           >
-            <div
-              className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2"
-              onClick={scrollToTop}
-            >
+            <div className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2">
               PRODUCTS
             </div>
           </Link>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import ProductItems from "./ProductItems";
 import { motion, AnimatePresence } from "framer-motion";
+import { Settings2 } from "lucide-react";
 
 interface CategoryFilterProps {
   categories: Category[] | null;
@@ -23,6 +24,7 @@ const CategoryFilter = ({
   colors,
 }: CategoryFilterProps) => {
   const [selected, setSelected] = useState(`${categoryId ? categoryId : ""}`);
+  const [filterOpened, setFilterOpened] = useState(false);
 
   const mappedProducts = products?.flatMap((product) => product);
 
@@ -42,37 +44,66 @@ const CategoryFilter = ({
       ) : (
         <h1 className="text-3xl font-bold">All Categories</h1>
       )}
-      <div className="gap-4 flex overflow-x-auto  flex-between">
-        <div className="flex gap-4 overflow-x-auto ">
-          <Button
-            variant={`${selected === "" ? "default" : "outline"}`}
-            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-            onClick={() => setSelected("")}
-          >
-            ALL
-          </Button>
-          {categories?.map((category) => (
-            <div className="flex items-center" key={category.id}>
-              <Button
-                variant={`${category.id === selected ? "default" : "outline"}`}
-                className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-                onClick={() => setSelected(category.id)}
-              >
-                {category.name}
-              </Button>
-            </div>
-          ))}
-        </div>
-        <div className="w-1/3  flex justify-center">
-          {sizes?.map((size) => (
+      <div className=" gap-4 flex overflow-x-auto justify-between items-center">
+        {!filterOpened ? (
+          <div className="flex gap-4 overflow-x-auto ">
             <Button
-              variant="ghost"
+              variant={`${selected === "" ? "default" : "outline"}`}
               className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-              key={size.id}
+              onClick={() => setSelected("")}
             >
-              {size.value}
+              ALL
             </Button>
-          ))}
+            {categories?.map((category) => (
+              <div className="flex items-center" key={category.id}>
+                <Button
+                  variant={`${
+                    category.id === selected ? "default" : "outline"
+                  }`}
+                  className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+                  onClick={() => setSelected(category.id)}
+                >
+                  {category.name}
+                </Button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 w-full">
+            <div className="flex items-center gap-4">
+              <div className="flex justify-start text-lg text-slate-800">
+                COLORS
+              </div>
+              {colors?.map((color) => (
+                <Button
+                  variant="ghost"
+                  key={color.id}
+                  className="h-8 w-8 rounded-full"
+                  style={{ backgroundColor: color.name }}
+                />
+              ))}
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex justify-start text-lg text-slate-800">
+                SIZES:
+              </div>
+              {sizes?.map((size) => (
+                <Button variant="ghost" key={size.id} className="w-full">
+                  {size.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )}
+        <div className="w-1/3  flex justify-end ">
+          <Button
+            variant="default"
+            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0 flex gap-2`}
+            onClick={() => setFilterOpened((prev) => !prev)}
+          >
+            Filter
+            <Settings2 size={18} />
+          </Button>
         </div>
       </div>
       <motion.div layout>

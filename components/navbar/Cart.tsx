@@ -15,7 +15,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import useCart from "@/hooks/use-cart";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import CartItem from "./CartItem";
+import CartItem from "@/components/navbar/CartItem";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
@@ -49,8 +49,8 @@ const Cart = () => {
         </SheetHeader>
         {itemCount > 0 ? (
           <>
-            <div className="flex w-full flex-col pr-6">
-              <ScrollArea>
+            <div className="flex w-full  flex-col pr-6">
+              <ScrollArea className="max-h-[500px]">
                 {items.map((product) => (
                   <CartItem product={product} key={product.id} />
                 ))}

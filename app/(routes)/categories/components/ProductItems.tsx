@@ -1,6 +1,7 @@
 "use client";
 import IconButton from "@/components/ui/icon-button";
 import { MotionDiv } from "@/components/ui/motiondiv";
+import useCart from "@/hooks/use-cart";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { Product } from "@/lib/types";
 import { formatter } from "@/lib/utils";
@@ -18,7 +19,10 @@ const ProductItems = ({ product }: ProductItemsProps) => {
     e.preventDefault();
     previewModal.onOpen(product);
   };
-
+  const cart = useCart();
+  const onAddToCart = (data: Product) => {
+    cart.addItem(data);
+  };
   return (
     <MotionDiv
       animate={{ opacity: 1 }}
@@ -46,13 +50,13 @@ const ProductItems = ({ product }: ProductItemsProps) => {
                 icon={<Expand size={20} className="text-gray-600" />}
               />
               <IconButton
-                // onClick={onAddToCart}
+                onClick={() => onAddToCart(product)}
                 icon={<ShoppingCart size={20} className="text-gray-600" />}
               />
             </div>
           </div>
         </div>
-        <div className="absolute w-full bg-zinc-200 h-[67px] border-zinc-900 bottom-0 left-0">
+        <div className="absolute w-full bg-zinc-200 max-h-[200px] min-h-[67px] border-zinc-900 bottom-0 left-0">
           <div className="flex flex-col p-2 ">
             <p>{product?.name}</p>
             <div className="flex justify-between w-full">

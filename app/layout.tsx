@@ -8,7 +8,7 @@ import Footer from "@/components/footer/Footer";
 import ModalProvider from "@/components/modal/modal-provider";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { Toaster } from "@/components/ui/sonner";
-
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 // urbanist
 // const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -23,10 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // const { isOpen } = usePreviewModal();
+
   return (
-    <html lang="en" className={`overflow-x-hidden `}>
+    <html lang="en" className={` `}>
       <body
-        className={`overflow-x-hidden  relative ${urbanist.className}  
+        className={` relative ${urbanist.className}  
         bg-gradient-to-r from-[#EDF1FE] to-[#d3d1ce] 
        
         `}
@@ -38,7 +39,7 @@ export default function RootLayout({
         <ModalProvider />
         <Toaster position="bottom-right" />
         <Navbar />
-        <section className="pt-28">{children}</section>
+        <section className="pt-28 overflow-x-hidden">{children}</section>
         <Footer />
       </body>
     </html>
