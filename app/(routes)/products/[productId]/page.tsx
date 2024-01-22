@@ -4,6 +4,7 @@ import Gallery from "@/components/gallery";
 import Info from "@/components/modal/Info";
 import Container from "@/components/ui/Container";
 import ProductList from "@/components/ui/product-list";
+import { Separator } from "@/components/ui/separator";
 import React from "react";
 
 interface ProductPageProps {
@@ -31,7 +32,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               <Info data={product} />
             </div>
           </div>
-          <hr className="my-10" />
+          <Separator className="bg-zinc-400 my-10" />
           <ProductList
             title="Related items"
             items={suggestedProducts}

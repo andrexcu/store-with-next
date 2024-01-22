@@ -45,56 +45,27 @@ const CategoryFilter = ({
         <h1 className="text-3xl font-bold">All Categories</h1>
       )}
       <div className=" gap-4 flex overflow-x-auto justify-between items-center">
-        {!filterOpened ? (
-          <div className="flex gap-4 overflow-x-auto ">
-            <Button
-              variant={`${selected === "" ? "default" : "outline"}`}
-              className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-              onClick={() => setSelected("")}
-            >
-              ALL
-            </Button>
-            {categories?.map((category) => (
-              <div className="flex items-center" key={category.id}>
-                <Button
-                  variant={`${
-                    category.id === selected ? "default" : "outline"
-                  }`}
-                  className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-                  onClick={() => setSelected(category.id)}
-                >
-                  {category.name}
-                </Button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 w-full">
-            <div className="flex items-center gap-4">
-              <div className="flex justify-start text-lg text-slate-800">
-                COLORS
-              </div>
-              {colors?.map((color) => (
-                <Button
-                  variant="ghost"
-                  key={color.id}
-                  className="h-8 w-8 rounded-full"
-                  style={{ backgroundColor: color.name }}
-                />
-              ))}
+        <div className="flex gap-4 overflow-x-auto ">
+          <Button
+            variant={`${selected === "" ? "default" : "outline"}`}
+            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+            onClick={() => setSelected("")}
+          >
+            ALL
+          </Button>
+          {categories?.map((category) => (
+            <div className="flex items-center" key={category.id}>
+              <Button
+                variant={`${category.id === selected ? "default" : "outline"}`}
+                className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+                onClick={() => setSelected(category.id)}
+              >
+                {category.name}
+              </Button>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="flex justify-start text-lg text-slate-800">
-                SIZES:
-              </div>
-              {sizes?.map((size) => (
-                <Button variant="ghost" key={size.id} className="w-full">
-                  {size.name}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
+
         <div className="w-1/3  flex justify-end ">
           <Button
             variant="default"
@@ -106,6 +77,40 @@ const CategoryFilter = ({
           </Button>
         </div>
       </div>
+      {filterOpened && (
+        <motion.div
+          animate={{ opacity: 1, y: "0" }}
+          initial={{ opacity: 0, y: "-50%" }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          layout
+          className="grid grid-cols-2 w-full  p-4 bg-[#C4C5BA]"
+        >
+          <div className="flex items-center gap-4">
+            <div className="flex justify-start text-lg text-slate-800">
+              COLORS
+            </div>
+            {colors?.map((color) => (
+              <Button
+                variant="ghost"
+                key={color.id}
+                className="h-8 w-8 rounded-full"
+                style={{ backgroundColor: color.name }}
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex justify-start text-lg text-slate-800">
+              SIZES
+            </div>
+            {sizes?.map((size) => (
+              <Button variant="outline" key={size.id} className="w-full">
+                {size.name}
+              </Button>
+            ))}
+          </div>
+        </motion.div>
+      )}
       <motion.div layout>
         <AnimatePresence>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">

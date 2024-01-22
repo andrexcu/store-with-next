@@ -7,7 +7,7 @@ import { Product } from "@/lib/types";
 import { formatter } from "@/lib/utils";
 import { Expand, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 interface ProductItemsProps {
   product: Product;
 }
@@ -24,7 +24,7 @@ const ProductItems = ({ product }: ProductItemsProps) => {
     cart.addItem(data);
   };
   return (
-    <MotionDiv
+    <motion.div
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
@@ -73,7 +73,7 @@ const ProductItems = ({ product }: ProductItemsProps) => {
           </div>
         </div>
       </div>
-    </MotionDiv>
+    </motion.div>
   );
 };
 

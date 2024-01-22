@@ -3,13 +3,14 @@
 import useCart from "@/hooks/use-cart";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { Product } from "@/lib/types";
-import { useScroll, useTransform } from "framer-motion";
+import { useAnimate, useInView, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/page.module.scss";
 
 import Image from "next/image";
 import Lenis from "@studio-freight/lenis";
 import Column from "@/components/ui/Column";
+import { motion } from "framer-motion";
 
 interface FeaturedProductsProps {
   products: Product[] | null;
@@ -40,20 +41,15 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
     target: gallery,
     offset: ["start end", "end start"],
   });
+
   const { height } = dimension;
   const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
+  // const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
   useEffect(() => {
-    // const lenis = new Lenis();
-
-    // const raf = (time: any) => {
-    //   lenis.raf(time);
-    //   requestAnimationFrame(raf);
-    // };
-
     const resize = () => {
       setDimension({ width: window.innerWidth, height: window.innerHeight });
     };
@@ -66,6 +62,19 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
       window.removeEventListener("resize", resize);
     };
   }, []);
+
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
+
+  useEffect(() => {
+    if (isInView) {
+      const enterAnimation = async () => {
+        animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
+      };
+      enterAnimation();
+    }
+  }, [isInView]);
+
   return (
     // <div className="bg-[#111014]  min-h-[1024px] w-full ">
 
@@ -88,7 +97,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
     //     </div>
     //   </div>
     // </div>
-    <main className="">
+    <main>
       <div className="h-[5vh] relative"></div>
       <div
         ref={gallery}

@@ -17,7 +17,6 @@ const Column = ({ images, y }: ColumnProps) => {
   const { scrollToTop } = useScrollStore();
 
   const handleScroll = (e: any) => {
-    e.preventDefault();
     scrollToTop();
   };
   return (
@@ -27,11 +26,14 @@ const Column = ({ images, y }: ColumnProps) => {
     >
       {images.map((src, i) => {
         return (
-          <div
+          <Link
+            key={i}
+            href={`/products/${src.id}`}
+            scroll={false}
+            className="w-full  h-full"
             onClick={handleScroll}
-            className="group h-full w-full relative rounded-[2vw] overflow-hidden flex justify-center items-center"
           >
-            <Link key={i} href={`/products/${src.id}`} scroll={false}>
+            <div className="group h-full w-full relative rounded-[2vw] overflow-hidden flex justify-center items-center">
               <Image
                 src={src.images[0].url}
                 alt="product image"
@@ -41,8 +43,8 @@ const Column = ({ images, y }: ColumnProps) => {
                 placeholder="blur"
                 blurDataURL={src.images[0].url}
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
 
           // className={`transform object-cover w-full h-full transition-all duration-300
           //         ease-in-out hover:opacity-80 `}

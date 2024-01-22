@@ -51,6 +51,7 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
   const onAddToCart = (data: Product) => {
     cart.addItem(data);
   };
+
   return (
     <>
       <div className="my-12">
@@ -64,8 +65,10 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
         </div>
         <p className="mt-4 text-medium">Uncompromised Quality in Every Shot</p>
       </div>
-      <section className="bg-zinc-900 grid grid-cols-3 h-[600px] sm:20">
-        <div className="relative col-span-3 sm:col-span-1 overflow-hidden h-[600px]">
+      <section className="bg-zinc-950 grid grid-cols-3 h-[600px] sm:20 framed">
+        <div
+          className={`relative col-span-3 sm:col-span-1 overflow-hidden h-[600px] `}
+        >
           <Image
             src={category?.billboard?.imageUrl}
             alt="product image"
