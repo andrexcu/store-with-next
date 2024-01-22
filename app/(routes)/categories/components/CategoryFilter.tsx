@@ -6,7 +6,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import ProductItems from "./ProductItems";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings2 } from "lucide-react";
+import { Settings2, X } from "lucide-react";
 
 interface CategoryFilterProps {
   categories: Category[] | null;
@@ -25,13 +25,43 @@ const CategoryFilter = ({
 }: CategoryFilterProps) => {
   const [selected, setSelected] = useState(`${categoryId ? categoryId : ""}`);
   const [filterOpened, setFilterOpened] = useState(false);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   const mappedProducts = products?.flatMap((product) => product);
+
+  // const sizeColorProducts = mappedProducts?.filter(
+  //   (m) => m.size.id === selectedSize && m.color.id === selectedColor
+  // );
+  let filteredProducts;
+
+  if (selectedSize !== "" && selectedColor === "") {
+    filteredProducts = mappedProducts?.filter(
+      (m) => m.size.id === selectedSize
+    );
+  } else if (selectedColor !== "" && selectedSize === "") {
+    filteredProducts = mappedProducts?.filter(
+      (m) => m.color.id === selectedColor
+    );
+  } else if (selectedSize !== "" && selectedColor !== "") {
+    filteredProducts = mappedProducts?.filter(
+      (m) => m.size.id === selectedSize && m.color.id === selectedColor
+    );
+  } else {
+    filteredProducts = products?.flatMap((product) => product);
+  }
+
+  const sizeColorProducts =
+    selectedSize !== "" && selectedColor !== ""
+      ? mappedProducts?.filter(
+          (m) => m.size.id === selectedSize && m.color.id === selectedColor
+        )
+      : products?.flatMap((product) => product);
 
   const selectedCategoryProducts = mappedProducts?.filter(
     (m) => m.category.id === selected
   );
-
+  console.log(selectedCategoryProducts);
   const selectedCategory = categories?.filter((c) => c.id === selected);
   return (
     <div className="relative w-full h-full flex flex-col gap-8 py-8">
@@ -92,10 +122,13 @@ const CategoryFilter = ({
             </div>
             {colors?.map((color) => (
               <Button
-                variant="ghost"
+                variant="default"
                 key={color.id}
-                className="h-8 w-8 rounded-full"
-                style={{ backgroundColor: color.name }}
+                className={`h-8 w-8 rounded-full ${
+                  selectedColor === color.id ? "border-4 border-slate-400" : ""
+                }`}
+                style={{ backgroundColor: color.value }}
+                onClick={() => setSelectedColor(color.id)}
               />
             ))}
           </div>
@@ -104,10 +137,22 @@ const CategoryFilter = ({
               SIZES
             </div>
             {sizes?.map((size) => (
-              <Button variant="outline" key={size.id} className="w-full">
+              <Button
+                variant={`${selectedSize === size.id ? "default" : "outline"}`}
+                key={size.id}
+                className="w-full"
+                onClick={() => setSelectedSize(size.id)}
+              >
                 {size.name}
               </Button>
             ))}
+            <X
+              className="h-6 w-1/2"
+              onClick={() => {
+                setSelectedSize("");
+                setSelectedColor("");
+              }}
+            />
           </div>
         </motion.div>
       )}
@@ -118,8 +163,9 @@ const CategoryFilter = ({
               ? selectedCategoryProducts?.map((product) => (
                   <ProductItems key={product.id} product={product} />
                 ))
-              : mappedProducts?.map((product) => (
+              : filteredProducts?.map((product) => (
                   <ProductItems key={product.id} product={product} />
+                  // Return null if none of the conditions are met
                 ))}
           </div>
         </AnimatePresence>

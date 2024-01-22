@@ -36,6 +36,7 @@ const HomePage = async () => {
       <TopCategory categories={categories} products={products} />
 
       <FeaturedProducts products={featuredProducts} />
+
       <Container>
         <div className="text-center h-full text-3xl">
           <Info billboard={billboard} />

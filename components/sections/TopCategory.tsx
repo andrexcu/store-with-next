@@ -41,13 +41,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     (m) => m.category.id === selected
   );
 
-  // const [selectedUrl, setSelectedUrl] = useState(
-  //   categories && categories.length > 0 && categories[0].billboard.imageUrl
-  // );
-  // selectedCategoryProducts?.map((product) => console.log(product.name));
-
-  // console.log(currentCategory);
-
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
 
@@ -60,13 +53,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     }
   }, [isInView]);
 
-  // const imageCarousel = useRef(null);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: imageCarousel,
-  //   offset: ["start end", "end start"],
-  // });
-
   const containerVariants = {
     hidden: { width: "250px" },
     visible: { width: "100%" },
@@ -75,35 +61,34 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
 
-  const gallery = useRef(null);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  // const gallery = useRef(null);
+  // const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
-  const { scrollYProgress } = useScroll({
-    target: gallery,
-    offset: ["start 0.3", "end start"],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: gallery,
+  //   offset: ["start 0.3", "end start"],
+  // });
 
-  const { height } = dimension;
-  // const y = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const maxScrollY = height - 650; // Adjust this value based on your red border height
-  const y = useTransform(scrollYProgress, [0, 1], [0, maxScrollY]);
+  // const { height } = dimension;
+  // const maxScrollY = height - 650;
+  // const y = useTransform(scrollYProgress, [0, 1], [0, maxScrollY]);
 
-  useEffect(() => {
-    const resize = () => {
-      setDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
+  // useEffect(() => {
+  //   const resize = () => {
+  //     setDimension({ width: window.innerWidth, height: window.innerHeight });
+  //   };
 
-    window.addEventListener("resize", resize);
-    resize();
+  //   window.addEventListener("resize", resize);
+  //   resize();
 
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", resize);
+  //   };
+  // }, []);
 
   return (
     <NextProvider>
-      <section className={`p-5 mx-auto max-w-full min-h-[450px] `}>
+      <section className={`p-5 mx-auto max-w-full min-h-[450px]`}>
         <motion.div
           initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
           animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
@@ -130,7 +115,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             className={`relative grid grid-cols-11 gap-x-4 select-none bg-cover bg-center`}
           >
             <motion.div
-              className={`pt-[184px] relative col-span-3 z-20`}
+              className={`pt-[170px] relative col-span-3 z-20`}
               initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
               animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
               transition={{
@@ -141,39 +126,40 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 delay: 0.5,
               }}
             >
-              <p className="relative z-20 flex font-thin text-3xl text-zinc-800 sm:text-4xl md:text-5xl lg:text-6xl text-start">
+              <p className="relative z-20 flex  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 Discover.
               </p>
-              <p className="flex relative z-20 font-thin text-3xl text-zinc-900 sm:text-4xl md:text-5xl lg:text-6xl text-start">
+              <p className="flex relative z-20  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 Style.
                 <span className="hidden sm:flex">
                   {/* <Gem size={52} className="text-zinc-800" /> */}
                 </span>
               </p>
-              <p className="relative z-20 font-thin text-3xl text-zinc-900 sm:text-4xl md:text-5xl lg:text-6xl text-start">
+              <p className="relative z-20  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
                 Beyond.
               </p>
             </motion.div>
 
-            <div className="relative flex flex-row col-span-8 min-h-[580px] z-10">
-              <motion.div
-                layout
-                initial={{ x: "-20%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-                animate={{ x: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
-                transition={{
-                  duration: 0.5,
-                  type: "spring",
-                  damping: 20,
-                  stiffness: 100,
-                }}
-                className={` overflow-hidden relative flex flex-row justify-end w-full h-full rounded-3xl gap-9
-            "}`}
-              >
-                {categories?.slice(0, 3).map((category, index) => (
-                  <motion.div
-                    key={category.id}
-                    layout="position"
-                    className={`duration-700 rounded-3xl relative h-full overflow-hidden z-0
+            <div className="relative flex flex-row col-span-8 min-h-[580px] z-10 ">
+              {categories && (
+                <motion.div
+                  layout
+                  initial={{ x: "-20%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
+                  animate={{ x: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+                  transition={{
+                    duration: 0.5,
+                    type: "spring",
+                    damping: 20,
+                    stiffness: 100,
+                  }}
+                  className={` overflow-hidden relative flex flex-row justify-end w-full h-full rounded-3xl gap-9`}
+                  onHoverEnd={() => setSelected(categories[0].id)}
+                >
+                  {categories?.slice(0, 3).map((category, index) => (
+                    <motion.div
+                      key={category.id}
+                      layout="position"
+                      className={`duration-700 rounded-3xl relative h-full overflow-hidden z-0
                      ${
                        selected === category.id
                          ? "w-full"
@@ -181,47 +167,48 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                      }
                     
                    `}
-                    onClick={() => {
-                      setSelected(category.id);
-                    }}
-                    animate={selected === category.id ? "visible" : "hidden"}
-                    transition={{ duration: 0.7 }}
-                    onHoverStart={(e) => setSelected(category.id)}
-                    // onHoverEnd={(e) => setSelected(categories[0].id)}
-                  >
-                    <Image
-                      src={category?.billboard?.imageUrl}
-                      alt="billboard image"
-                      fill
-                      sizes="100vw, 100vh"
-                      className={`rounded-lg h-[100%] object-cover absolute transition-opacity duration-300 ease-in-out lg:hover:opacity-90`}
-                      placeholder="blur"
-                      blurDataURL={category?.billboard?.imageUrl}
-                    />
+                      onClick={() => {
+                        setSelected(category.id);
+                      }}
+                      animate={selected === category.id ? "visible" : "hidden"}
+                      transition={{ duration: 0.7 }}
+                      onHoverStart={(e) => setSelected(category.id)}
+                      // onHoverEnd={(e) => setSelected(categories[0].id)}
+                    >
+                      <Image
+                        src={category?.billboard?.imageUrl}
+                        alt="billboard image"
+                        fill
+                        sizes="100vw, 100vh"
+                        className={`rounded-lg h-[100%] object-cover absolute transition-opacity duration-300 ease-in-out lg:hover:opacity-90`}
+                        placeholder="blur"
+                        blurDataURL={category?.billboard?.imageUrl}
+                      />
 
-                    <p
-                      className={`hidden sm:flex absolute top-4 left-4 text-zinc-900 ${
-                        kaushan.className
-                      } ${
-                        selected !== category.id
-                          ? "opacity-0 transition-opacity duration-500"
-                          : "opacity-100 transition-opacity duration-1000"
-                      }`}
-                    >
-                      {category?.name}
-                    </p>
-                    <p
-                      className={`hidden sm:flex absolute top-52 left-4 text-zinc-900 text-xl ${
-                        selected !== category.id
-                          ? "opacity-0 transition-opacity duration-500"
-                          : "opacity-100 transition-opacity duration-1000"
-                      }`}
-                    >
-                      {category?.billboard.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
+                      <p
+                        className={`hidden sm:flex absolute top-4 left-4 text-zinc-900 ${
+                          kaushan.className
+                        } ${
+                          selected !== category.id
+                            ? "opacity-0 transition-opacity duration-500"
+                            : "opacity-100 transition-opacity duration-1000"
+                        }`}
+                      >
+                        {category?.name}
+                      </p>
+                      <p
+                        className={`hidden sm:flex absolute top-52 left-4 text-zinc-900 text-xl ${
+                          selected !== category.id
+                            ? "opacity-0 transition-opacity duration-500"
+                            : "opacity-100 transition-opacity duration-1000"
+                        }`}
+                      >
+                        {category?.billboard.label}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
             </div>
 
             <motion.div
