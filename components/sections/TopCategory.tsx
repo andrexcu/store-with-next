@@ -18,6 +18,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { Gem } from "lucide-react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 interface TopCategoryProps {
   categories: Category[] | null;
   products?: Product[][] | null;
@@ -156,56 +158,61 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                   onHoverEnd={() => setSelected(categories[0].id)}
                 >
                   {categories?.slice(0, 3).map((category, index) => (
-                    <motion.div
+                    <Link
                       key={category.id}
-                      layout="position"
+                      href={`/categories/${category.id}`}
                       className={`duration-700 rounded-3xl relative h-full overflow-hidden z-0
-                     ${
-                       selected === category.id
-                         ? "w-full"
-                         : "w-[250px] hidden sm:flex"
-                     }
-                    
-                   `}
-                      onClick={() => {
-                        setSelected(category.id);
-                      }}
-                      animate={selected === category.id ? "visible" : "hidden"}
-                      transition={{ duration: 0.7 }}
-                      onHoverStart={(e) => setSelected(category.id)}
-                      // onHoverEnd={(e) => setSelected(categories[0].id)}
+                    ${
+                      selected === category.id
+                        ? "w-full"
+                        : "w-[250px] hidden sm:flex"
+                    }`}
                     >
-                      <Image
-                        src={category?.billboard?.imageUrl}
-                        alt="billboard image"
-                        fill
-                        sizes="100vw, 100vh"
-                        className={`rounded-lg h-[100%] object-cover absolute transition-opacity duration-300 ease-in-out lg:hover:opacity-90`}
-                        placeholder="blur"
-                        blurDataURL={category?.billboard?.imageUrl}
-                      />
+                      <motion.div
+                        layout="position"
+                        onClick={() => {
+                          setSelected(category.id);
+                        }}
+                        animate={
+                          selected === category.id ? "visible" : "hidden"
+                        }
+                        transition={{ duration: 0.7 }}
+                        onHoverStart={(e) => setSelected(category.id)}
+                        className="w-full h-full relative"
+                        // onHoverEnd={(e) => setSelected(categories[0].id)}
+                      >
+                        <Image
+                          src={category?.billboard?.imageUrl}
+                          alt="billboard image"
+                          fill
+                          sizes="100vw, 100vh"
+                          className={`rounded-lg h-[100%] object-cover absolute transition-opacity duration-300 ease-in-out lg:hover:opacity-90`}
+                          placeholder="blur"
+                          blurDataURL={category?.billboard?.imageUrl}
+                        />
 
-                      <p
-                        className={`hidden sm:flex absolute top-4 left-4 text-zinc-900 ${
-                          kaushan.className
-                        } ${
-                          selected !== category.id
-                            ? "opacity-0 transition-opacity duration-500"
-                            : "opacity-100 transition-opacity duration-1000"
-                        }`}
-                      >
-                        {category?.name}
-                      </p>
-                      <p
-                        className={`hidden sm:flex absolute top-52 left-4 text-zinc-900 text-xl ${
-                          selected !== category.id
-                            ? "opacity-0 transition-opacity duration-500"
-                            : "opacity-100 transition-opacity duration-1000"
-                        }`}
-                      >
-                        {category?.billboard.label}
-                      </p>
-                    </motion.div>
+                        <p
+                          className={`hidden sm:flex absolute top-4 left-4 text-zinc-900 ${
+                            kaushan.className
+                          } ${
+                            selected !== category.id
+                              ? "opacity-0 transition-opacity duration-500"
+                              : "opacity-100 transition-opacity duration-1000"
+                          }`}
+                        >
+                          {category?.name}
+                        </p>
+                        <p
+                          className={`hidden sm:flex absolute top-52 left-4 text-zinc-900 text-xl ${
+                            selected !== category.id
+                              ? "opacity-0 transition-opacity duration-500"
+                              : "opacity-100 transition-opacity duration-1000"
+                          }`}
+                        >
+                          {category?.billboard.label}
+                        </p>
+                      </motion.div>
+                    </Link>
                   ))}
                 </motion.div>
               )}
@@ -253,7 +260,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           </div>
         </div>
       </section>
-      <section className="mb-52 mx-auto max-w-[1920px] ">
+      <section className="mb-40 mx-auto max-w-[1920px]  pb-12">
         <div className="text-center h-full text-3xl mx-auto max-w-7xl ">
           <div className="grid grid-cols-3 gap-4 mt-24 ">
             <motion.div
@@ -267,23 +274,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               }}
               className="mb-20 col-span-3 relative flex flex-col gap-8 h-12 justify-center items-center w-full "
             >
-              {/* <Separator className="bg-zinc-700/80 absolute " /> */}
-              {/*{categories?.slice(0, 3)?.map((category) => (
-                <p
-                  key={category.id}
-                  // bg-[#EDF1FE]/70
-                  // bg-[#111014]
-                  className={`absolute bg-[#EDF1FE]/70 backdrop-blur-sm z-30 p-2 min-h-[50px] ${
-                    selected !== category.id
-                      ? "opacity-0 transition-opacity duration-300"
-                      : "opacity-100 transition-opacity duration-300"
-                  }`}
-                >
-                  <span className="text-2xl font-thin text-zinc-950 ">
-                    Products for {category.name}
-                  </span>
-                </p>
-              ))} */}
               <p className="text-zinc-800 font-bold text-4xl">
                 Top Categories with 1000+ Sold Products
               </p>
@@ -304,17 +294,22 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 ))}
               </Tabs>
             </motion.div>
-
             <div className="col-span-3  ">
               {selectedCategoryProducts ? (
                 <ProductCarousel
                   selectedCategoryProducts={selectedCategoryProducts}
-                  // y={y}
                 />
               ) : (
                 ""
               )}
             </div>
+            {/* <div className="grid grid-cols-3 w-full my-12 col-span-3 ">
+              <div />
+              <Button className="w-full h-20 text-xl">
+                Check This Category
+              </Button>
+              <div />
+            </div> */}
           </div>
         </div>
       </section>

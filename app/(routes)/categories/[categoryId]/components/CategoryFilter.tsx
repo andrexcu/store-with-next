@@ -10,6 +10,7 @@ import { Settings2, X } from "lucide-react";
 import Link from "next/link";
 import FilterColor from "./FilterColor";
 import FilterSize from "./FilterSize";
+import NoResults from "./NoResults";
 
 interface CategoryFilterProps {
   categories?: Category[];
@@ -126,15 +127,19 @@ const CategoryFilter = ({
           />
         </motion.div>
       )}
-      <motion.div layout>
-        <AnimatePresence>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {products?.map((product) => (
-              <ProductItems key={product.id} product={product} />
-            ))}
-          </div>
-        </AnimatePresence>
-      </motion.div>
+      {products && products.length > 0 ? (
+        <motion.div layout>
+          <AnimatePresence>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {products?.map((product) => (
+                <ProductItems key={product.id} product={product} />
+              ))}
+            </div>
+          </AnimatePresence>
+        </motion.div>
+      ) : (
+        <NoResults />
+      )}
     </div>
   );
 };

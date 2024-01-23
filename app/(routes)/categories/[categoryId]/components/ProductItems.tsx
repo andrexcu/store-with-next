@@ -23,6 +23,7 @@ const ProductItems = ({ product }: ProductItemsProps) => {
   const onAddToCart = (data: Product) => {
     cart.addItem(data);
   };
+
   return (
     <motion.div
       animate={{ opacity: 1 }}

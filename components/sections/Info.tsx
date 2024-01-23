@@ -24,7 +24,7 @@ const Info = ({ billboard }: InfoProps) => {
             Discover your style as AITOUKART Products lets you freely choose
             your preferred colors and sizes.
           </div>
-          <Scroller href="categories">
+          <Scroller href="659e38eef34c8be65e096404">
             <div className=" flex flex-row justify-center lg:justify-start items-center w-full ">
               <Button
                 variant="default"

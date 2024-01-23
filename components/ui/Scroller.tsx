@@ -12,8 +12,13 @@ const Scroller = ({
 }) => {
   const { scrollToTop } = useScrollStore();
   return (
-    <Link scroll={false} href={`/${href}`} className="w-full">
-      <span onClick={scrollToTop}>{children}</span>
+    <Link
+      scroll={false}
+      href={`/categories/${href}`}
+      onClick={scrollToTop}
+      className="w-full"
+    >
+      <span>{children}</span>
     </Link>
   );
 };
