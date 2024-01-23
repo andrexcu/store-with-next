@@ -115,7 +115,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             className={`relative grid grid-cols-11 gap-x-4 select-none bg-cover bg-center`}
           >
             <motion.div
-              className={`pt-[170px] relative col-span-3 z-20`}
+              className={`pt-[180px] relative col-span-3 z-20`}
               initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
               animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
               transition={{
@@ -126,16 +126,16 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 delay: 0.5,
               }}
             >
-              <p className="relative z-20 flex  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="relative z-20 flex  text-3xl text-[#240807] font-thin sm:text-4xl md:text-5xl lg:text-6xl  text-start">
                 Discover.
               </p>
-              <p className="flex relative z-20  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="flex relative z-20  text-3xl text-[#240807] font-thin sm:text-4xl md:text-5xl lg:text-6xl  text-start">
                 Style.
                 <span className="hidden sm:flex">
                   {/* <Gem size={52} className="text-zinc-800" /> */}
                 </span>
               </p>
-              <p className="relative z-20  text-3xl text-[#240807] font-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-start">
+              <p className="relative z-20  text-3xl text-[#240807] font-thin sm:text-4xl md:text-5xl lg:text-6xl  text-start">
                 Beyond.
               </p>
             </motion.div>

@@ -9,8 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Settings2, X } from "lucide-react";
 
 interface CategoryFilterProps {
-  categories: Category[] | null;
-  products?: Product[][] | null;
+  categories?: Category[] | null;
+  products?: Product[] | null;
   sizes?: Size[] | null;
   colors?: Color[] | null;
   categoryId?: string;

@@ -108,7 +108,7 @@ const Navbar = () => {
 
       <NavbarContent className=" gap-8" justify="center">
         <Link
-          href="/categories"
+          href="/categories/all"
           scroll={false}
           className="hidden sm:flex"
           onClick={scrollToTop}
@@ -132,7 +132,7 @@ const Navbar = () => {
 
       <NavbarMenu className="pt-6 overflow-hidden">
         <NavbarMenuItem className="h-full flex flex-col items-center justify-center gap-4">
-          <Link href="/categories" scroll={false}>
+          <Link href="/categories/all" scroll={false}>
             <div
               className="text-slate-700 text-3xl flex-col justify-end items-end"
               onClick={scrollToTop}
@@ -140,7 +140,7 @@ const Navbar = () => {
               Categories
             </div>
           </Link>
-          <Link href="/categories" scroll={false}>
+          <Link href="/products/65a0d513abe0a553a4b79a79" scroll={false}>
             <div
               className="text-slate-700 text-3xl flex-col justify-end items-end"
               onClick={scrollToTop}
