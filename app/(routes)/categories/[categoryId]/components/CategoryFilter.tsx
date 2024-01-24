@@ -11,6 +11,14 @@ import Link from "next/link";
 import FilterColor from "./FilterColor";
 import FilterSize from "./FilterSize";
 import NoResults from "./NoResults";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface CategoryFilterProps {
   categories?: Category[];
@@ -62,38 +70,34 @@ const CategoryFilter = ({
       ) : (
         <h1 className="text-3xl font-bold">All Categories</h1>
       )}
-      <div className=" gap-4 flex overflow-x-auto justify-between items-center">
-        <div className="flex gap-4 overflow-x-auto ">
-          <Link href={`/categories/all`}>
-            <Button
-              variant={`${selected === "" ? "default" : "outline"}`}
-              className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-              onClick={() => setSelected("")}
-            >
-              ALL
-            </Button>
-          </Link>
+      <div className=" gap-4 flex flex-col lg:flex-row justify-between items-center">
+        <Link href={`/categories/all`}>
+          <Button
+            variant={`${selected === "" ? "default" : "outline"}`}
+            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+            onClick={() => setSelected("")}
+          >
+            ALL
+          </Button>
+        </Link>
+        <div className="flex flex-wrap justify-center gap-4  items-center">
           {categories?.map((category) => (
-            <div className="flex items-center" key={category.id}>
-              <Link href={`/categories/${category.id}`}>
-                <Button
-                  variant={`${
-                    category.id === selected ? "default" : "outline"
-                  }`}
-                  className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
-                  onClick={() => setSelected(category.id)}
-                >
-                  {category.name}
-                </Button>
-              </Link>
-            </div>
+            <Link href={`/categories/${category.id}`} className="">
+              <Button
+                variant={`${category.id === selected ? "default" : "outline"}`}
+                className={`w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+                onClick={() => setSelected(category.id)}
+              >
+                {category.name}
+              </Button>
+            </Link>
           ))}
         </div>
 
-        <div className="w-1/3  flex justify-end ">
+        <div className="min-w-0  flex items-center justify-end  ">
           <Button
             variant="default"
-            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0 flex gap-2`}
+            className={`flex items-center min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0 gap-2`}
             onClick={() => setFilterOpened((prev) => !prev)}
           >
             Filter
@@ -108,7 +112,7 @@ const CategoryFilter = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           layout
-          className="grid grid-cols-2 w-full  p-4 bg-[#C4C5BA]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full  p-4 bg-[#C4C5BA]"
         >
           <FilterColor
             valueKey="colorId"

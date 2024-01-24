@@ -56,7 +56,7 @@ const FilterColor = ({
           <Button
             variant={`${selectedSize === filter.id ? "default" : "outline"}`}
             key={filter.id}
-            className="w-full"
+            className="w-full min-w-50px"
             onClick={() => {
               selectedSize === "" || selectedSize !== filter.id
                 ? setSelectedSize(filter.id)
@@ -64,7 +64,8 @@ const FilterColor = ({
               onClick(filter.id);
             }}
           >
-            {filter.name}
+            <span className="hidden md:flex">{filter.name}</span>
+            <span className="flex md:hidden">{filter.value}</span>
           </Button>
         ))}
       </div>

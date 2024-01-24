@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "@/app/page.module.scss";
 
 import Image from "next/image";
-import Lenis from "@studio-freight/lenis";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import Column from "@/components/ui/Column";
 import { motion } from "framer-motion";
 
@@ -48,32 +48,40 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
-
+  let animationFrameId: number;
   useEffect(() => {
+    // const lenis = new Lenis();
+
+    // const raf = (time: any) => {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // };
+
     const resize = () => {
       setDimension({ width: window.innerWidth, height: window.innerHeight });
     };
 
     window.addEventListener("resize", resize);
-    // requestAnimationFrame(raf);
+    // animationFrameId = requestAn imationFrame(raf);
     resize();
 
     return () => {
       window.removeEventListener("resize", resize);
+      // window.cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  const [scope, animate] = useAnimate();
-  const isInView = useInView(scope);
+  // const [scope, animate] = useAnimate();
+  // const isInView = useInView(scope);
 
-  useEffect(() => {
-    if (isInView) {
-      const enterAnimation = async () => {
-        animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
-      };
-      enterAnimation();
-    }
-  }, [isInView]);
+  // useEffect(() => {
+  //   if (isInView) {
+  //     const enterAnimation = async () => {
+  //       animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
+  //     };
+  //     enterAnimation();
+  //   }
+  // }, [isInView]);
 
   return (
     // <div className="bg-[#111014]  min-h-[1024px] w-full ">
@@ -97,7 +105,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
     //     </div>
     //   </div>
     // </div>
-    <main>
+    <ReactLenis root>
       <div className="h-[5vh] relative"></div>
       <div
         ref={gallery}
@@ -114,7 +122,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
         </div>
       </div>
       <div className="h-[5vh] relative"></div>
-    </main>
+    </ReactLenis>
   );
 };
 

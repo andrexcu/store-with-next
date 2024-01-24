@@ -108,7 +108,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           {/* <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
             <div className="bgmoon z-0 top-0 w-[700px] min-h-[800px]" />
           </div> */}
-          <div className="hidden sm:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
+          <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
             <div className="moon z-0 top-28 left-28 w-[300px] min-h-[325px]" />
           </div>
         </motion.div>
@@ -176,7 +176,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                         animate={
                           selected === category.id ? "visible" : "hidden"
                         }
-                        transition={{ duration: 0.7 }}
+                        transition={{ duration: 0 }}
                         onHoverStart={(e) => setSelected(category.id)}
                         className="w-full h-full relative"
                         // onHoverEnd={(e) => setSelected(categories[0].id)}
