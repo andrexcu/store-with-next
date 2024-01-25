@@ -19,7 +19,7 @@ const CartPage = () => {
           <h1 className="text-3xl font-bold text-black">Shopping Cart</h1>
           <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
             <ScrollArea
-              className="flex items-center  h-[600px] lg:col-span-7 bg-[#C4C5BA] px-8 overflow-auto"
+              className="flex items-center h-[600px]  lg:col-span-7 bg-[#C4C5BA] px-8 overflow-auto"
               //   onClick={(e) => handleScrollAreaClick(e)}
             >
               {cart.items.length === 0 && (

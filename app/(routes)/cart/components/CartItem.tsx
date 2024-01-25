@@ -29,8 +29,8 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           blurDataURL={data.images[0].url}
         />
       </div>
-      <div className="relative ml-4 flex flex-col flex-1 justify-between sm:ml-6">
-        <div className="absolute z-10 right-0 top-0">
+      <div className=" relative ml-4 flex flex-col flex-1 justify-between sm:ml-6">
+        <div className="absolute z-10 right-0 top-0 mr-2">
           <IconButton onClick={onRemove} icon={<X size={15} />} />
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
