@@ -65,27 +65,35 @@ const CategoryFilter = ({
       {selected !== "" ? (
         selectedCategory &&
         selectedCategory.map((category) => (
-          <h1 className="text-3xl font-bold">{category.name}</h1>
+          <h1 key={category?.id} className="text-3xl font-bold">
+            {category.name}
+          </h1>
         ))
       ) : (
-        <h1 className="text-3xl font-bold">All Categories</h1>
+        <h1 key={category?.id} className="text-3xl font-bold">
+          All Categories
+        </h1>
       )}
       <div className=" gap-4 flex flex-col lg:flex-row justify-between items-center">
         <Link href={`/categories/all`}>
           <Button
             variant={`${selected === "" ? "default" : "outline"}`}
-            className={`min-w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+            className={`min-w-24 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
             onClick={() => setSelected("")}
           >
             ALL
           </Button>
         </Link>
-        <div className="flex flex-wrap justify-center gap-4  items-center">
+        <div className="flex flex-wrap text-lg justify-center gap-4  items-center">
           {categories?.map((category) => (
-            <Link href={`/categories/${category.id}`} className="">
+            <Link
+              key={category?.id}
+              href={`/categories/${category.id}`}
+              className=""
+            >
               <Button
                 variant={`${category.id === selected ? "default" : "outline"}`}
-                className={`w-36 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
+                className={`min-w-24 focus-none ring-offset-0 focus-visible:ring-0  focus-visible:ring-offset-0`}
                 onClick={() => setSelected(category.id)}
               >
                 {category.name}

@@ -34,7 +34,6 @@ const HomePage = async () => {
   return (
     <>
       <TopCategory categories={categories} products={products} />
-
       <FeaturedProducts products={featuredProducts} />
 
       <Container>

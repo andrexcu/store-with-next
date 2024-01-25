@@ -49,7 +49,11 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
         onSelectionChange={(key: any) => setSelectedImageId(key)}
       >
         {images.map((image, index) => (
-          <Tab key={image.id} title={`Image ${index + 1}`} className="" />
+          <Tab
+            key={image.id}
+            title={`Image ${index + 1}`}
+            className="relative"
+          />
         ))}
       </Tabs>
     </div>

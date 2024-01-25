@@ -74,14 +74,14 @@ const ProductCarousel = ({
                       className="border border-red-500 w-full h-full"
                     > */}
                     <Image
-                      src={product.images[1].url}
+                      src={product.images[0].url}
                       alt="billboard image"
                       fill
                       sizes="100vh"
                       className="
                           transform group-hover:scale-110 object-cover w-full h-full transition-all duration-100 ease-in-out group-hover:opacity-80"
                       placeholder="blur"
-                      blurDataURL={product.images[1].url}
+                      blurDataURL={product.images[0].url}
                     />
                     {/* </Link> */}
                     <div className=" select-none flex items-center justify-center  absolute right-0 bottom-0 text-lg w-full h-full p-1 ">

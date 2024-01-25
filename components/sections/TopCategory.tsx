@@ -8,7 +8,14 @@ import { kaushan } from "@/app/fonts";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import ProductCarousel from "../ui/product-carousel";
 import ProductSearch from "../ui/product-search";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import {
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 import {
   AnimatePresence,
   motion,
@@ -21,8 +28,8 @@ import { Gem } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 interface TopCategoryProps {
-  categories: Category[] | null;
-  products?: Product[][] | null;
+  categories: Category[];
+  products: Product[][];
 }
 
 const TopCategory = ({ categories, products }: TopCategoryProps) => {
@@ -39,9 +46,9 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   // console.log(products)
   const mappedProducts = products?.flatMap((product) => product);
 
-  const selectedCategoryProducts = mappedProducts?.filter(
-    (m) => m.category.id === selected
-  );
+  const selectedCategoryProducts = mappedProducts
+    ?.reverse()
+    .filter((m) => m.category.id === selected);
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
@@ -62,31 +69,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
 
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
-
-  // const gallery = useRef(null);
-  // const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-  // const { scrollYProgress } = useScroll({
-  //   target: gallery,
-  //   offset: ["start 0.3", "end start"],
-  // });
-
-  // const { height } = dimension;
-  // const maxScrollY = height - 650;
-  // const y = useTransform(scrollYProgress, [0, 1], [0, maxScrollY]);
-
-  // useEffect(() => {
-  //   const resize = () => {
-  //     setDimension({ width: window.innerWidth, height: window.innerHeight });
-  //   };
-
-  //   window.addEventListener("resize", resize);
-  //   resize();
-
-  //   return () => {
-  //     window.removeEventListener("resize", resize);
-  //   };
-  // }, []);
 
   return (
     <NextProvider>
@@ -255,7 +237,25 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               }}
               className="absolute z-30 bottom-12 lg:left-24"
             >
-              <ProductSearch />
+              {/* <ProductSearch /> */}
+              <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                <Select
+                  label="Search"
+                  size="lg"
+                  className="relative w-72 opacity-90 backdrop-blur-md"
+                  placeholder="Find a category"
+                >
+                  {categories.map((category) => (
+                    <SelectItem
+                      key={category.id}
+                      value={category.name}
+                      href={`/categories/${category.id}`}
+                    >
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </Select>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -278,6 +278,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 Top Categories with 1000+ Sold Products
               </p>
               <Tabs
+                aria-labelledby="Top Categories"
                 aria-label="Top Categories"
                 size="lg"
                 key="underlined"
@@ -287,9 +288,11 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               >
                 {categories?.slice(0, 3)?.map((category) => (
                   <Tab
+                    aria-labelledby="Top Categories"
                     key={category.id}
                     title={category.name}
                     className="text-lg"
+                    aria-label={category.id}
                   />
                 ))}
               </Tabs>
