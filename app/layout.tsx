@@ -32,10 +32,6 @@ export default function RootLayout({
        
         `}
       >
-        {/* from-[#d8d0c5] to-[#EDF1FE] */}
-        {/* from-[#EDF1FE] to-[#d8d0c5] */}
-        {/* [#fff7ea]  */}
-        {/* <div className="w-full bg-[#FFFAFA] fixed min-h-[50px] z-50 top-0"></div> */}
         <ModalProvider />
         <Toaster position="bottom-right" />
         <Navbar />

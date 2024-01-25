@@ -7,11 +7,10 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import { kaushan } from "@/app/fonts";
-import Scroller from "@/components/ui/Scroller";
-import { ArrowRight, Expand, ShoppingCart } from "lucide-react";
-import usePreviewModal from "@/hooks/use-preview-modal";
 import IconButton from "@/components/ui/icon-button";
 import useCart from "@/hooks/use-cart";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import { Expand, ShoppingCart } from "lucide-react";
 
 interface EyeCatchProps {
   category: Category;
@@ -44,7 +43,6 @@ const EyeCatch = ({ category, products }: EyeCatchProps) => {
   );
   const previewModal = usePreviewModal();
   const onPreview = (product: Product) => {
-    // e.preventDefault();
     previewModal.onOpen(product);
   };
   const cart = useCart();

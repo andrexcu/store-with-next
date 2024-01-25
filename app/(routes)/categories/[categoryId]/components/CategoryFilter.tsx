@@ -42,8 +42,6 @@ const CategoryFilter = ({
 
   const selectedCategory = categories?.filter((c) => c.id === selected);
 
-  const mappedProducts = products?.flatMap((product) => product);
-
   let filteredProducts;
 
   if (selectedSize !== "" && selectedColor === "") {
@@ -57,8 +55,6 @@ const CategoryFilter = ({
   } else {
     filteredProducts = products?.map((product) => product);
   }
-
-  // console.log(filteredProducts);
 
   return (
     <div className="relative w-full h-full flex flex-col gap-8 py-8">

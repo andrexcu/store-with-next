@@ -1,5 +1,4 @@
 "use client";
-import React, { MouseEventHandler, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -7,15 +6,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CardContent } from "./card";
-import { Card } from "@nextui-org/react";
-import Image from "next/image";
 import IconButton from "@/components/ui/icon-button";
-import { Product } from "@/lib/types";
-import { Expand, ShoppingCart } from "lucide-react";
-import usePreviewModal from "@/hooks/use-preview-modal";
 import useCart from "@/hooks/use-cart";
-import { motion, useScroll, useTransform } from "framer-motion";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import { Product } from "@/lib/types";
+import { Card } from "@nextui-org/react";
+import { motion } from "framer-motion";
+import { Expand, ShoppingCart } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ProductCarouselProps {
@@ -41,14 +39,6 @@ const ProductCarousel = ({
     cart.addItem(data);
   };
 
-  // const container = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-  //   offset: ["start end", "end start"],
-  // });
-
-  // const sm = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
   return (
     <motion.div className="col-span-3 " style={{ y }}>
       <Carousel className="col-span-3 min-h-[400px] ">
@@ -69,10 +59,6 @@ const ProductCarousel = ({
                     href={`/products/${[product.id]}`}
                     className={`overflow-hidden group relative w-full flex min-h-[400px] items-center justify-center  `}
                   >
-                    {/* <Link
-                      href={`/products/${[product.id]}`}
-                      className="border border-red-500 w-full h-full"
-                    > */}
                     <Image
                       src={product.images[0].url}
                       alt="billboard image"

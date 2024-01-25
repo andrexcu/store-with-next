@@ -1,4 +1,3 @@
-"use client";
 import { kaushan } from "@/app/fonts";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
@@ -28,7 +27,6 @@ const InstagramPhotos = () => {
   return (
     <section className="flex items-end relative h-[320px]">
       <div className="absolute top-0 flex justify-center items-center w-full  z-30">
-        {/* <Separator className="bg-zinc-200 absolute" /> */}
         <div
           className={`flex flex-col items-center gap-x-2 text-3xl bg-[#EDF1FE]/70 z-30 px-2 ${kaushan.className} font-thin`}
         >

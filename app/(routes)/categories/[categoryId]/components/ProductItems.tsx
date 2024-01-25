@@ -39,14 +39,14 @@ const ProductItems = ({ product }: ProductItemsProps) => {
     >
       <Link href={`/products/${product.id}`}>
         <div className="relative h-full w-full border-2 border-zinc-300 group-hover:border-zinc-900 transition-all duration-300 ease-in-out">
-          <div className="relative w-full overflow-hidden h-[280px]">
+          <div className="bg-black relative w-full overflow-hidden h-[280px]">
             <Image
               src={product?.images[0].url as string}
               alt="billboard image"
               fill
               sizes="100vh"
               className="
-         transform group-hover:scale-110 object-cover w-full h-full transition-all duration-300 ease-in-out"
+         transform group-hover:scale-110 hover:opacity-80 object-cover w-full h-full transition-all duration-300 ease-in-out"
               placeholder="blur"
               blurDataURL={product?.images[0].url}
             />

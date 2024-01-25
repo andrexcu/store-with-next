@@ -9,7 +9,7 @@ import Link from "next/link";
 import useScrollStore from "@/hooks/useScroll";
 
 interface ColumnProps {
-  images: Product[];
+  images: Product[] | null;
   y: any;
 }
 
@@ -24,24 +24,25 @@ const Column = ({ images, y }: ColumnProps) => {
       className={`column relative h-full w-1/4 min-w-[250px] flex flex-col gap-[2vw]`}
       style={{ y }}
     >
-      {images.map((src, i) => {
+      {images?.map((src, i) => {
         return (
           <Link
             key={i}
-            href={`/products/${src.id}`}
+            href={`/products/${src?.id}`}
             scroll={false}
             className="w-full  h-full"
             onClick={handleScroll}
           >
             <div className="group h-full w-full relative rounded-[2vw] overflow-hidden flex justify-center items-center">
               <Image
-                src={src.images[0].url}
+                src={src?.images[0].url}
                 alt="product image"
                 fill
                 sizes="100vw, 100vh"
                 className={`object-cover transition-opacity duration-300 hover:opacity-80 `}
                 placeholder="blur"
-                blurDataURL={src.images[0].url}
+                blurDataURL={src?.images[0].url}
+                priority
               />
             </div>
           </Link>

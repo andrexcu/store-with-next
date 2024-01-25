@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import { Image as ImageType } from "@/lib/types";
+import { Card, Tab, Tabs } from "@nextui-org/react";
+import { motion, useAnimate } from "framer-motion";
 import Image from "next/image";
-import { useAnimate, motion } from "framer-motion";
+import React, { useState } from "react";
 
 interface GalleryProps {
   images: ImageType[];
@@ -11,7 +11,7 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const [selectedImageId, setSelectedImageId] = useState(images[0].id);
-  const [scope, animate] = useAnimate();
+  const [scope] = useAnimate();
   return (
     <div className="flex w-full flex-col gap-2">
       <Card>
@@ -19,7 +19,6 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           <React.Fragment key={image.id}>
             {image.id === selectedImageId && (
               <>
-                {/* <div className="aspect-square relative h-full w-full overflow-hidden rounded-lg bg-black"> */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -35,6 +34,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                     className="h-auto w-auto rounded-lg object-cover "
                     placeholder="blur"
                     blurDataURL={image.url}
+                    priority
                   />
                 </motion.div>
               </>

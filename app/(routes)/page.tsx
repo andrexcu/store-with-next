@@ -1,6 +1,7 @@
 import getBillboard from "@/actions/get-billboard";
 import getCategories from "@/actions/get-categories";
 import getCategory from "@/actions/get-category";
+import { getProducts } from "@/actions/get-products";
 import EyeCatch from "@/components/sections/EyeCatch";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Info from "@/components/sections/Info";
@@ -9,19 +10,17 @@ import Newsletter from "@/components/sections/Newsletter";
 import OrderInfo from "@/components/sections/OrderInfo";
 import TopCategory from "@/components/sections/TopCategory";
 import Container from "@/components/ui/Container";
-import { getProducts } from "@/actions/get-products";
-import Client from "@/components/ui/Client";
-
-// export const revalidate = 0;
 
 const HomePage = async () => {
   const categories = await getCategories();
 
-  const productsPromises = categories.map((category) =>
-    getProducts({ categoryId: category.id })
-  );
+  // const productsPromises = categories.map((category) =>
+  //   getProducts({ categoryId: category.id })
+  // );
 
-  const products = await Promise.all(productsPromises);
+  // const products = await Promise.all(productsPromises);
+
+  const products = await getProducts({});
 
   const featuredProducts = await getProducts({ isFeatured: true });
   const billboard = await getBillboard("65a0ed8aabe0a553a4b79a7f");

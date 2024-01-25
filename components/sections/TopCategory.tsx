@@ -1,35 +1,16 @@
 "use client";
-import { Category, Product } from "@/lib/types";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import { NextProvider } from "@/Providers/NextProvider";
-import { Separator } from "@/components/ui/separator";
 import { kaushan } from "@/app/fonts";
-import usePreviewModal from "@/hooks/use-preview-modal";
-import ProductCarousel from "../ui/product-carousel";
-import ProductSearch from "../ui/product-search";
-import {
-  Tabs,
-  Tab,
-  Card,
-  CardBody,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
-import {
-  AnimatePresence,
-  motion,
-  useAnimate,
-  useInView,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { Gem } from "lucide-react";
-import { Button } from "../ui/button";
+import { Category, Product } from "@/lib/types";
+import { Select, SelectItem, Tab, Tabs } from "@nextui-org/react";
+import { motion, useAnimate, useInView } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import ProductCarousel from "../ui/product-carousel";
 interface TopCategoryProps {
   categories: Category[];
-  products: Product[][];
+  products: Product[];
 }
 
 const TopCategory = ({ categories, products }: TopCategoryProps) => {
@@ -37,18 +18,15 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     categories && categories.length > 0 ? categories[0].id : ""
   );
 
-  const category = categories?.map((category) => category);
-
-  const currentCategory = category?.filter((c) => c.id === selected);
-
-  // console.log(category);
-  // console.log(categories);
-  // console.log(products)
   const mappedProducts = products?.flatMap((product) => product);
 
-  const selectedCategoryProducts = mappedProducts
-    ?.reverse()
+  const selectedCategoryProducts = products
+    .toReversed()
     .filter((m) => m.category.id === selected);
+
+  // const selectedCategoryProducts = mappedProducts
+  //   ?.reverse()
+  //   .filter((m) => m.category.id === selected);
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
@@ -62,20 +40,16 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     }
   }, [isInView]);
 
-  const containerVariants = {
-    hidden: { width: "250px" },
-    visible: { width: "100%" },
-  };
-
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
 
+  // console.log(products);
   return (
     <NextProvider>
       <section className={`p-5 mx-auto max-w-full min-h-[450px]`}>
         <motion.div
-          initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-          animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+          initial={{ y: "10%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.5,
             type: "spring",
@@ -84,12 +58,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             delay: 0.5,
           }}
           className="absolute top-0 left-0  w-full h-dvh"
-          // bg-[#111014]
-          // style={{ opacity: scrollOpacity }}
         >
-          {/* <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
-            <div className="bgmoon z-0 top-0 w-[700px] min-h-[800px]" />
-          </div> */}
           <div className="hidden lg:flex mt-32 relative mx-auto max-w-[1536px] h-full ">
             <div className="moon z-0 top-28 left-28 w-[300px] min-h-[325px]" />
           </div>
@@ -100,8 +69,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
           >
             <motion.div
               className={`pt-[180px] relative col-span-3 z-20`}
-              initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-              animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+              initial={{ y: "10%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.5,
                 type: "spring",
@@ -115,9 +84,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               </p>
               <p className="flex relative z-20  text-3xl text-[#240807] font-thin sm:text-4xl md:text-5xl lg:text-6xl  text-start">
                 Style.
-                <span className="hidden sm:flex">
-                  {/* <Gem size={52} className="text-zinc-800" /> */}
-                </span>
+                <span className="hidden sm:flex"></span>
               </p>
               <p className="relative z-20  text-3xl text-[#240807] font-thin sm:text-4xl md:text-5xl lg:text-6xl  text-start">
                 Beyond.
@@ -128,8 +95,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
               {categories && (
                 <motion.div
                   layout
-                  initial={{ x: "-20%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-                  animate={{ x: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+                  initial={{ x: "-20%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
                   transition={{
                     duration: 0.5,
                     type: "spring",
@@ -161,7 +128,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                         transition={{ duration: 0 }}
                         onHoverStart={(e) => setSelected(category.id)}
                         className="w-full h-full relative"
-                        // onHoverEnd={(e) => setSelected(categories[0].id)}
                       >
                         <Image
                           src={category?.billboard?.imageUrl}
@@ -201,8 +167,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             </div>
 
             <motion.div
-              initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-              animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+              initial={{ y: "10%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.5,
                 type: "spring",
@@ -226,8 +192,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
             </motion.div>
 
             <motion.div
-              initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-              animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+              initial={{ y: "10%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.5,
                 type: "spring",
@@ -264,8 +230,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
         <div className="text-center h-full text-3xl mx-auto max-w-7xl ">
           <div className="grid grid-cols-3 gap-4 mt-24 ">
             <motion.div
-              initial={{ y: "10%", opacity: 0 }} // Set the initial position off-screen (10% down) and fully transparent
-              animate={{ y: 0, opacity: 1 }} // Animate to the final position (0) and fully opaque
+              initial={{ y: "10%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{
                 duration: 0.5,
                 type: "spring",
@@ -306,13 +272,6 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                 ""
               )}
             </div>
-            {/* <div className="grid grid-cols-3 w-full my-12 col-span-3 ">
-              <div />
-              <Button className="w-full h-20 text-xl">
-                Check This Category
-              </Button>
-              <div />
-            </div> */}
           </div>
         </div>
       </section>
