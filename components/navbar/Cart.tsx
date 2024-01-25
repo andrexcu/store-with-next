@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCart } from "lucide-react";
+import { ShoppingBag, ShoppingCart } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import useCart from "@/hooks/use-cart";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -35,15 +35,21 @@ const Cart = () => {
   return (
     <Sheet>
       <SheetTrigger className="group -m-2 flex items-center p-2">
-        <ShoppingCart
+        <Button className="flex items-center rounded-full bg-[#404a42] opacity-100 px-4 py-2">
+          <ShoppingBag size={20} color="white" />
+          <span className="ml-2 text-sm font-medium text-white">
+            {isMounted ? itemCount : 0}
+          </span>
+        </Button>
+        {/* <ShoppingCart
           aria-hidden="true"
           className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
         />
         <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
           {isMounted ? itemCount : 0}
-        </span>
+        </span> */}
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg ]">
         <SheetHeader className="space-y-2.5 pr-6">
           <SheetTitle>Cart ({itemCount})</SheetTitle>
         </SheetHeader>
@@ -89,11 +95,12 @@ const Cart = () => {
               aria-hidden="true"
               className="relative mb-4 h-60 w-60 text-muted-foreground"
             >
-              {/* <Image
-                src="/hippo-empty-cart.png"
+              <Image
+                src="/emptycart.png"
                 fill
-                alt="empty shopping cart hippo"
-              /> */}
+                sizes="100vh, 100vw"
+                alt="empty cart with moon"
+              />
             </div>
             <div className="text-xl font-semibold">Your cart is empty</div>
             <SheetTrigger asChild>

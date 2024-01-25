@@ -1,4 +1,4 @@
-import ProductItems from "@/app/(routes)/categories/components/ProductItems";
+import ProductItems from "@/app/(routes)/categories/[categoryId]/components/ProductItems";
 import { Product } from "@/lib/types";
 
 interface ProductListProps {

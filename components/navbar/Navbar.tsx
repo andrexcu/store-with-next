@@ -1,23 +1,18 @@
 "use client";
 
-import { dmsans, blinker } from "@/app/fonts";
+import { dmsans } from "@/app/fonts";
 import Cart from "@/components/navbar/Cart";
-import Container from "@/components/ui/Container";
 import useScrollStore from "@/hooks/useScroll";
-import Link from "next/link";
-import { Link as NextLink } from "@nextui-org/react";
-import { useEffect, useState } from "react";
 import {
   Navbar as Nav,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  Button,
-  NavbarMenuItem,
   NavbarMenu,
+  NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
@@ -53,19 +48,6 @@ const Navbar = () => {
             : "transition-all duration-300 ease-in h-[120px] "
         }`}
     >
-      {/* <motion.div
-        initial={{ y: "-100%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 0.5,
-          type: "spring",
-          damping: 20,
-          stiffness: 100,
-          delay: 1,
-        }}
-        className="flex items-center w-full"
-      > */}
-      {/* #fff7ea */}
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -118,13 +100,13 @@ const Navbar = () => {
           </div>
         </Link>
         <Link
-          href="/products/65a0d513abe0a553a4b79a79"
+          href="/products/65abbeb7d3c22982ac29c9e8"
           scroll={false}
           className="hidden sm:flex"
           onClick={scrollToTop}
         >
           <div className="text-slate-200 hidden sm:flex flex-col justify-end items-end pt-2">
-            PRODUCTS
+            PRODUCT PAGE
           </div>
         </Link>
         <Cart />
@@ -137,15 +119,15 @@ const Navbar = () => {
               className="text-slate-700 text-3xl flex-col justify-end items-end"
               onClick={scrollToTop}
             >
-              Categories
+              CATEGORIES
             </div>
           </Link>
-          <Link href="/products/65a0d513abe0a553a4b79a79" scroll={false}>
+          <Link href="/products/65abbeb7d3c22982ac29c9e8" scroll={false}>
             <div
               className="text-slate-700 text-3xl flex-col justify-end items-end"
               onClick={scrollToTop}
             >
-              Products
+              PRODUCT PAGE
             </div>
           </Link>
         </NavbarMenuItem>

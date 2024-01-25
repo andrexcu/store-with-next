@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ProductCarousel from "../ui/product-carousel";
+import { useRouter } from "next/navigation";
 interface TopCategoryProps {
   categories: Category[];
   products: Product[];
@@ -18,7 +19,11 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
     categories && categories.length > 0 ? categories[0].id : ""
   );
 
-  const mappedProducts = products?.flatMap((product) => product);
+  const router = useRouter();
+  const inCategorySelect = (category: string) => {
+    router.push(`/categories/${category}`);
+  };
+  // const mappedProducts = products?.flatMap((product) => product);
 
   const selectedCategoryProducts = products
     .toReversed()
@@ -215,7 +220,8 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                     <SelectItem
                       key={category.id}
                       value={category.name}
-                      href={`/categories/${category.id}`}
+                      // href={`/categories/${category.id}`}
+                      onClick={() => inCategorySelect(category.id)}
                     >
                       {category.name}
                     </SelectItem>

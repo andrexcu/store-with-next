@@ -9,6 +9,7 @@ import ModalProvider from "@/components/modal/modal-provider";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { Toaster } from "@/components/ui/sonner";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import Hydration from "@/components/modal/hydration";
 // urbanist
 // const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -34,7 +35,9 @@ export default function RootLayout({
       >
         <ModalProvider />
         <Toaster position="bottom-right" />
-        <Navbar />
+        <Hydration>
+          <Navbar />
+        </Hydration>
         <section className="pt-28 overflow-x-hidden">{children}</section>
         <Footer />
       </body>
