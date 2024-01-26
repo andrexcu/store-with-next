@@ -38,7 +38,7 @@ export default function RootLayout({
         <Hydration>
           <Navbar />
         </Hydration>
-        <section className="pt-0 overflow-x-hidden">{children}</section>
+        <section className="pt-28 overflow-x-hidden">{children}</section>
         <Footer />
       </body>
     </html>

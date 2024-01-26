@@ -39,8 +39,8 @@ const Navbar = () => {
     <Nav
       maxWidth="xl"
       onMenuOpenChange={setIsMenuOpen}
-      position="static"
-      className={` transition-all duration-300 ease-in bg-[#111014]  w-full z-50   ${
+      // position="static"
+      className={` transition-all duration-300 ease-in bg-[#111014] fixed  w-full z-50   ${
         dmsans.className
       } 
         ${
