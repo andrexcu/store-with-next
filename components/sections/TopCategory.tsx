@@ -51,7 +51,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   // console.log(products);
   return (
     <NextProvider>
-      <section className={`pb-5 px-5 pt-2 mx-auto max-w-full min-h-[450px]`}>
+      <section className={`p-5 mx-auto max-w-full min-h-[450px]`}>
         <motion.div
           initial={{ y: "10%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
