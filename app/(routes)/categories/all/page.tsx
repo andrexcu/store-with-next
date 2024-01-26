@@ -30,6 +30,7 @@ const AllCategoryPage = async ({
   const categories = await getCategories();
   const sizes = await getSizes();
   const colors = await getColors();
+
   return (
     <div>
       <Container>

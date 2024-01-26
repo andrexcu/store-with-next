@@ -18,6 +18,7 @@ const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
     const slicedProducts = products.slice(0, 12);
     images.push(...slicedProducts);
   }
+  // console.log(products);
 
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });

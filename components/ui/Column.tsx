@@ -35,14 +35,13 @@ const Column = ({ images, y }: ColumnProps) => {
           >
             <div className="group h-full w-full relative rounded-[2vw] overflow-hidden flex justify-center items-center">
               <Image
-                src={src?.images[0].url}
+                src={src?.images[0]?.url}
                 alt="product image"
                 fill
                 sizes="100vw, 100vh"
                 className={`object-cover transition-opacity duration-300 hover:opacity-80 `}
                 placeholder="blur"
-                blurDataURL={src?.images[0].url}
-                priority
+                blurDataURL={src?.images[0]?.url}
               />
             </div>
           </Link>
