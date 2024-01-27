@@ -16,7 +16,7 @@ This Ecommerce website is using my full-stack CMS Project API. You can explore t
 - [Lenis](https://github.com/studio-freight/lenis) for smooth-scroll
 - [Axios](https://axios-http.com/) for API requests
 - [Zustand](https://github.com/pmndrs/zustand) for state management
-<h1 align="center">˙✧˖°📷 ༘ ⋆｡˚Screenshots of the Project ˙✧˖°📷 ༘ ⋆｡˚</h1>
+## 📸 Screenshots of the Project 
 
 <h3 align="center">Home Page</h1>
 <img src="https://github.com/andrexcu/store-with-next/assets/137764968/0b534653-1bb7-494d-ba85-6ce0a289238d" alt="aitoukart-landingpage" width="100%">
