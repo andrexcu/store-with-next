@@ -96,8 +96,11 @@ const ProductCarousel = ({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+
+        <div className="pt-4 flex justify-center gap-x-4 relative">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
     </motion.div>
   );
