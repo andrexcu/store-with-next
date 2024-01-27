@@ -28,8 +28,6 @@ const Summary = () => {
     return total + Number(item.price);
   }, 0);
 
-  console.log(typeof totalPrice);
-
   const productIds = items.map((item) => item.id);
   const onCheckout = async () => {
     const response = await axios.post(
