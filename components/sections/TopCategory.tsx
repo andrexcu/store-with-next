@@ -43,7 +43,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
       };
       enterAnimation();
     }
-  }, [isInView]);
+  }, [isInView, animate, scope]);
 
   const dynamicUrl =
     "https://utfs.io/f/f3d9e892-d3b4-4da8-8da2-609c12adf0bf-3ao0ov.jpg";
