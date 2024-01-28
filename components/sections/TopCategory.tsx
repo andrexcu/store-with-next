@@ -25,13 +25,9 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
   };
   // const mappedProducts = products?.flatMap((product) => product);
 
-  const selectedCategoryProducts = products
-    .toReversed()
+  const selectedCategoryProducts = [...products]
+    .reverse()
     .filter((m) => m.category.id === selected);
-
-  // const selectedCategoryProducts = mappedProducts
-  //   ?.reverse()
-  //   .filter((m) => m.category.id === selected);
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
