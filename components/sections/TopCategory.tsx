@@ -145,7 +145,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                         />
 
                         <p
-                          className={`hidden sm:flex absolute top-4 left-4 text-zinc-900 ${
+                          className={`hidden sm:flex absolute top-4 left-4 text-zinc-600 ${
                             kaushan.className
                           } ${
                             selected !== category.id
@@ -156,7 +156,7 @@ const TopCategory = ({ categories, products }: TopCategoryProps) => {
                           {category?.name}
                         </p>
                         <p
-                          className={`hidden sm:flex absolute top-52 left-4 text-zinc-900 text-xl ${
+                          className={`hidden sm:flex absolute top-52 left-4 text-zinc-600 text-xl ${
                             selected !== category.id
                               ? "opacity-0 transition-opacity duration-500"
                               : "opacity-100 transition-opacity duration-1000"
