@@ -1,7 +1,7 @@
 <p align="center"><img src="https://github.com/andrexcu/store-with-next/assets/137764968/5e9a583e-5d38-4b8d-96ff-a4a1eaf00bb9" alt="addproducts" width="500"></p>
 
 # ℹ️ About the project
-minimalist e-commerce website with a modern and user-friendly design made with react and tailwindcss. Navigate seamlessly through the website, designed for an intuitive shopping experience that places emphasis on the products. Enjoy the simplicity and modern aesthetic of this store.
+>**minimalist e-commerce website with a modern and user-friendly design made with react and tailwindcss. Navigate seamlessly through the website, designed for an intuitive shopping experience that places emphasis on the products. Enjoy the simplicity and modern aesthetic of this store.**
 
 Visit Live Demo: 👉 <a href="https://store-with-next.vercel.app/">Store Demo</a>.
 
