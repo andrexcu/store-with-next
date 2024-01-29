@@ -7,6 +7,7 @@ Visit Live Demo: 👉 <a href="https://store-with-next.vercel.app/">Store Demo</
 
 This Ecommerce website is using my full-stack CMS Project API. You can explore the corresponding repository here:
 👉 <a href="https://github.com/andrexcu/cms-admin">Full Stack CMS</a>.
+* * * * *
 ### 🛠️Built with:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Next.js 14](https://nextjs.org/)
@@ -17,6 +18,7 @@ This Ecommerce website is using my full-stack CMS Project API. You can explore t
 - [Lenis](https://github.com/studio-freight/lenis) for smooth-scroll
 - [Axios](https://axios-http.com/) for API requests
 - [Zustand](https://github.com/pmndrs/zustand) for state management
+* * * * *
 ## 📸 Screenshots of the Project 
 
 <h3 align="center">Home Page</h1>
