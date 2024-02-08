@@ -3,7 +3,7 @@
 # ℹ️ About the project
 >**minimalist e-commerce website with a modern and user-friendly design made with react and tailwindcss. Navigate seamlessly through the website, designed for an intuitive shopping experience that places emphasis on the products. Enjoy the simplicity and modern aesthetic of this store.**
 
-Visit Live Demo: 👉 <a href="https://store-with-next.vercel.app/">Store Demo</a>.
+<!-- Visit Live Demo: 👉 <a href="https://store-with-next.vercel.app/">Store Demo</a>. -->
 
 This Ecommerce website is using my full-stack CMS Project API. You can explore the corresponding repository here:
 👉 <a href="https://github.com/andrexcu/cms-admin">Full Stack CMS</a>.
